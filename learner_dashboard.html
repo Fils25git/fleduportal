@@ -3,29 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FL Eduportal - Access exams and learning materials">
+    <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">
+    <meta name="author" content="Fils Lambert IRATURINZE">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
     <title>FL Eduportal - Learner Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header><h1>FL Eduportal</h1></header>
+    <header> 
+        <h1>FL EduPortal</h1></header>
 
     <main>
-        <h3 style="text-align:center;">Select Your Level</h3>
-
+ <h2 style="text-align:center;">Select Your  Class Level</h2>
         <form id="learnerCategory">
-            <h2 style="text-align:center;">Select Class Type</h2>
-            <label><input type="radio" name="category" value="primary" id="primary"> Primary</label><br>
+            <label><input type="radio" name="category" value="primary" id="primary"> PRIMARY</label><br>
             <label><input type="radio" name="category" value="secondary" id="secondary"> Secondary</label><br><br>
-
-            <button type="submit">Continue</button>
+         <button type="submit">Continue</button>
+         <button onclick="window.history.back()" style="background-color: bisque; color: black;">🔙 Go Back</button>
         </form>
     </main>
-
-    <footer>
+<br>
+    <footer class="container">
         <h3><u>Contacts</u></h3>
-        <p>Email: flduportal25@gmail.com<br>Phone: +250739911090</p> <br>
+        <p>Email: fleduportal25@gmail.com<br>Phone: +250739911090</p> <br>
         <nav>
-            <a href="1.html" style="background-color:purple"> About US</a> 
+            <a href="1.html"> About US</a><br>
+            <a href="index.html">Back Home</a> 
         </nav>
     </footer>
 

@@ -15,20 +15,19 @@ header {
 }
 
 footer {
-    background-color: #4CAF50;
-    color: white;
     padding: 10px;
     text-align: center;
 }
 
 main {
-    padding: 20px;
+    padding: 80%;
 }
 
 /* Form styles */
 form {
     text-align: center;
     margin-top: 20px;
+    width: 100%;
 }
 
 label {
@@ -37,7 +36,7 @@ label {
 }
 
 /* Button styles */
-button {
+button,a {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -46,7 +45,7 @@ button {
     font-size: 16px;
 }
 
-button:hover {
+button:hover, a:hover {
     background-color: #45a049;
 }
 header {margin: auto; padding:2%;
@@ -58,7 +57,7 @@ main{background-color:rgb(27, 165, 82)}
       margin: 50px;
   }
   .container {
-      max-width:400PX;
+      max-width:100%PX;
       margin: auto;
       padding: 20px;
       border: 1px solid #ddd;
@@ -90,7 +89,7 @@ main{background-color:rgb(27, 165, 82)}
     margin: auto;
   }
   
-  .subject-buttons {
+  .subject-buttons,a {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -100,7 +99,7 @@ main{background-color:rgb(27, 165, 82)}
     block-size: auto;
   }
   
-  .subject-buttons button {
+  .subject-buttons button,a {
     background-color: #4CAF50;
     color: white;
     border: none;

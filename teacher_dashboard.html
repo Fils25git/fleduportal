@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Category Selection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+        <h2>Select Teacher Category</h2>
+        <form id="teacherCategoryForm">
+            <label>
+                <input type="radio" name="teacherCategory" value="primary"> Primary Teacher
+            </label><br>
+            <label>
+                <input type="radio" name="teacherCategory" value="secondary"> Secondary Teacher
+            </label><br><br>
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+    <div class="container hidden" id="primaryOptions">
+        <h2>Primary Teacher Options</h2>
+        <button onclick="location.href='lowerP.html'">Lower Primary</button>
+        <button onclick="location.href='upperP.html'">Upper Primary</button>
+    </div>
+    <div class="container hidden" id="secondaryOptions"> 
+            <h2>Secondary Teacher Options</h2> 
+        <div class="subject-buttons">
+        <button onclick="location.href='not yet.html'">Ordinary Level</button>
+        <button onclick="location.href='not yet.html'">Advanced Level</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>

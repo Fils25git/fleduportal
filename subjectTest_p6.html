@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subject Selection</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link to your existing CSS file -->
+</head>
+<style>body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.subject-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+ </style>
+     
+<body>
+
+  <h2>Welcome to FL EduPortal P6 Tests dashboard !</h2>
+  <p>Please select the subject you want to take the test for:</p>
+
+  <div class="subject-buttons">
+    <button onclick="location.href='english-test.html'">English</button>
+    <button onclick="location.href='kinyarwanda-test.html'">Kinyarwanda</button>
+    <button onclick="location.href='mathematics-test.html'">Mathematics</button>
+    <button onclick="location.href='science-test.html'">Science and Elementary Technology</button>
+    <button onclick="location.href='french-test.html'">French</button>
+    <button onclick="location.href='sre-test.html'">Social and Religious Education</button>
+  </div>
+
+  <script src="script.js"></script> <!-- Link to your existing JS file -->
+</body>
+</html>

@@ -77,20 +77,24 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("Please select a class before continuing.");
             }
         });
-    }
-});
-document.getElementById("teacherCategoryForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const selectedCategory = document.querySelector('input[name="teacherCategory"]:checked');
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("teacherCategoryForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const selectedCategory = document.querySelector('input[name="teacherCategory"]:checked');
 
-    if (selectedCategory) {
-        document.querySelector(".container").style.display = "none"; // Hide the form
-        if (selectedCategory.value === "primary") {
-            document.getElementById("primaryOptions").classList.remove("hidden");
-        } else if (selectedCategory.value === "secondary") {
-            document.getElementById("secondaryOptions").classList.remove("hidden");
+        if (selectedCategory) {
+            // Hide the form container
+            document.getElementById("teacherCategoryForm").style.display = "none"; 
+
+            // Show the relevant options based on the selected category
+            if (selectedCategory.value === "primary") {
+                document.getElementById("primaryOptions").classList.remove("hidden");
+            } else if (selectedCategory.value === "secondary") {
+                document.getElementById("secondaryOptions").classList.remove("hidden");
+            }
+        } else {
+            alert("Please select a category before continuing.");
         }
-    } else {
-        alert("Please select a category before continuing.");
-    }
+    });
 });

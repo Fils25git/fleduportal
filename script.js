@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "secondary5": "s5_options.html",
         "secondary6": "s6_options.html"
     };
+
     // Handle login form for Teacher/Learner
     if (userselectionForm) {
         userselectionForm.addEventListener("submit", function(event) {
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
     // Handle learner category selection (Primary or Secondary)
     if (learnerCategoryForm) {
         learnerCategoryForm.addEventListener("submit", function(event) {
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
     // Handle teacher category selection (Primary or Secondary)
     if (teacherSelectionForm) {
         teacherSelectionForm.addEventListener("submit", function(event) {
@@ -49,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
     // Show Primary or Secondary class levels
     if (classSelectionForm) {
         const primaryClasses = document.getElementById("primaryClasses");
@@ -62,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
             secondaryClasses.style.display = "block";
             primaryClasses.style.display = "none";
         }
+
         // Class selection redirection
         classSelectionForm.addEventListener("submit", function(event) {
             event.preventDefault();
@@ -77,24 +82,26 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("Please select a class before continuing.");
             }
         });
-    });
-    document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("teacherCategoryForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const selectedCategory = document.querySelector('input[name="teacherCategory"]:checked');
+    }
 
-        if (selectedCategory) {
-            // Hide the form container
-            document.getElementById("teacherCategoryForm").style.display = "none"; 
+    // Handle teacher category form submission
+    if (document.getElementById("teacherCategoryForm")) {
+        document.getElementById("teacherCategoryForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const selectedCategory = document.querySelector('input[name="teacherCategory"]:checked');
+            if (selectedCategory) {
+                // Hide the form container
+                document.getElementById("teacherCategoryForm").style.display = "none"; 
 
-            // Show the relevant options based on the selected category
-            if (selectedCategory.value === "primary") {
-                document.getElementById("primaryOptions").classList.remove("hidden");
-            } else if (selectedCategory.value === "secondary") {
-                document.getElementById("secondaryOptions").classList.remove("hidden");
+                // Show the relevant options based on the selected category
+                if (selectedCategory.value === "primary") {
+                    document.getElementById("primaryOptions").classList.remove("hidden");
+                } else if (selectedCategory.value === "secondary") {
+                    document.getElementById("secondaryOptions").classList.remove("hidden");
+                }
+            } else {
+                alert("Please select a category before continuing.");
             }
-        } else {
-            alert("Please select a category before continuing.");
-        }
-    });
+        });
+    }
 });

@@ -8,40 +8,42 @@
     <meta name="author" content="Fils Lambert IRATURINZE">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <title>Teacher Category Selection</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body> 
     <header>
-  <div class="container">
-        <h2>Dear Teacher, Select Your Category</h2>
-  </header>
-        <form id="teacherCategoryForm">
-            <label>
-                <input type="radio" name="teacherCategory" value="primary"> Primary Teacher
-            </label><br>
-            <label>
-                <input type="radio" name="teacherCategory" value="secondary"> Secondary Teacher
-            </label><br><br>
-            <button type="submit">Continue</button>
-        </form>
+        <div class="container">
+            <h2>Dear Teacher, Select Your Category</h2>
         </div>
+    </header>
+
+    <form id="teacherCategoryForm">
+        <label>
+            <input type="radio" name="teacherCategory" value="primary"> Primary Teacher
+        </label><br>
+        <label>
+            <input type="radio" name="teacherCategory" value="secondary"> Secondary Teacher
+        </label><br><br>
+        <button type="submit">Continue</button>
+    </form>
 
     <div class="container hidden" id="primaryOptions">
         <h2>Primary Teacher Options</h2>
         <button onclick="location.href='lowerP.html'">Lower Primary</button>
         <button onclick="location.href='upperP.html'">Upper Primary</button>
     </div>
+
     <div class="container hidden" id="secondaryOptions"> 
-            <h2>Secondary Teacher Options</h2> 
+        <h2>Secondary Teacher Options</h2> 
         <div class="subject-buttons">
-        <button onclick="location.href='not yet.html'">Ordinary Level</button>
-        <button onclick="location.href='not yet.html'">Advanced Level</button>
+            <button onclick="location.href='not yet.html'">Ordinary Level</button>
+            <button onclick="location.href='not yet.html'">Advanced Level</button>
         </div>
     </div>
+
     <footer class="container">
         <h3><u>Contacts</u></h3>
         <p>Email: fleduportal25@gmail.com<br>Phone: +250739911090</p> <br>
@@ -49,7 +51,7 @@
             <a href="1.html" style="background-color:purple"> About US</a> 
         </nav>
     </footer>
-    <script src="script.js"></script>
 
+    <script src="script.js"></script>
 </body>
 </html>

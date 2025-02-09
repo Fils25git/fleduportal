@@ -23,7 +23,7 @@ body {
     padding: 10px 20px;
     margin: 5px;
     font-size: 16px;
-    width:400px;
+    width:60%;
     display:block;
     margin:auto;
 }
@@ -40,7 +40,7 @@ body {
     color: white;
     border: none;
     cursor: pointer;
-    margin-bottom: auto;
+    margin-bottom:30%;
     margin-top: auto;
 }
 #next-btn,#prev-btn{

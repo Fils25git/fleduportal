@@ -23,9 +23,8 @@ body {
     padding: 10px 20px;
     margin: 5px;
     font-size: 16px;
-    width:auto;
-    display: flex;
-    flex-direction: column;
+    width:400;
+    display:block;
     margin: 300px auto;
 }
 .result {

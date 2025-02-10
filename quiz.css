@@ -10,6 +10,7 @@ body {
     padding: 20px;
     position: fixed;
     width: 100%;
+    font-size: larger;
 }
 .footer {
     bottom: 0;
@@ -40,13 +41,16 @@ body {
     color: white;
     border: none;
     cursor: pointer;
-    margin-bottom:30%;
+    margin-bottom:auto;
     margin-top: auto;
+    width: 50%;
 }
 #next-btn,#prev-btn{
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(234, 14, 120);
+    max-width:40% ;
+    width:30% ;
 }
 .button-container {
     font-size: larger;

@@ -25,7 +25,7 @@ body {
     margin: 5px;
     font-size: 16px;
     width:60%;
-    display:block;
+    display:flex;
     margin:auto;
 }
 .result {

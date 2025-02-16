@@ -58,3 +58,6 @@ body {
     margin-right: auto;
     margin-top: 10PX;
 }
+#comprehension-section, #grammar-section {
+    display: none; /* Initially hidden */
+}

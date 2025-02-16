@@ -8,61 +8,60 @@
   <meta name="author" content="Fils Lambert IRATURINZE">
   <link rel="stylesheet" href="quiz.css">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-  <title> English Test P4</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <title>English Test P4</title>
 </head>
 <body>
 
-    <div id="text-section" class="question-container">
-        <p id="story-text">
-          <img href="logo.html">
-            <h3>Read the follwing passage and then tap next for answering questions about it</h3>
-            <h4><u>Title: The Day the Pencil Ran Away!</u></h4>
-            <br><br>
-            One morning, Tom was ready to start his test. He opened his pencil case, but—Oh no! His pencil was gone!
-            <br><br>
-            “Where is my pencil?” Tom asked. He looked under his book, inside his bag, and even in his shoe! But it was nowhere to be found.
-            <br><br>
-            Suddenly, he heard a tiny voice whisper, “I’m tired of writing! I need a break!”
-            <br><br>
-            Tom jumped. Was his pencil talking?
-            <br><br>
-            The pencil rolled off the table and hid under the teacher’s desk.
-            <br><br>
-            Tom laughed. “Come back, Pencil! If you help me finish my test, I will give you a long rest!”
-            <br><br>
-            The pencil thought for a moment and then rolled back to Tom.
-            <br><br>
-            “Okay, but no chewing on me this time!” it said.
-            <br><br>
-            Tom smiled and started his test.
-        </p>
-        <button id="next-btn" onclick="showComprehensionQuestions()">Next</button>
-    </div>
+  <div id="text-section" class="question-container">
+    <p id="story-text">
+      <h3>Read the following passage and then tap next for answering questions about it</h3>
+      <h4><u>Title: The Day the Pencil Ran Away!</u></h4>
+      <br><br>
+      One morning, Tom was ready to start his test. He opened his pencil case, but—Oh no! His pencil was gone!
+      <br><br>
+      “Where is my pencil?” Tom asked. He looked under his book, inside his bag, and even in his shoe! But it was nowhere to be found.
+      <br><br>
+      Suddenly, he heard a tiny voice whisper, “I’m tired of writing! I need a break!”
+      <br><br>
+      Tom jumped. Was his pencil talking?
+      <br><br>
+      The pencil rolled off the table and hid under the teacher’s desk.
+      <br><br>
+      Tom laughed. “Come back, Pencil! If you help me finish my test, I will give you a long rest!”
+      <br><br>
+      The pencil thought for a moment and then rolled back to Tom.
+      <br><br>
+      “Okay, but no chewing on me this time!” it said.
+      <br><br>
+      Tom smiled and started his test.
+    </p>
+    <button id="next-btn" onclick="showComprehensionQuestions()">Next</button>
+  </div>
 
-    <div id="comprehension-section" class="question-container" style="display: none;">
-        <h3>Comprehension Questions:</h3>
-        <div id="comprehension-questions"></div>
-        <button id="next-btn-comprehension" onclick="showGrammarQuestions()">Next</button>
-    </div>
+  <div id="comprehension-section" class="question-container" style="display: none;">
+    <h3>Comprehension Questions:</h3>
+    <div id="comprehension-questions"></div>
+    <button id="next-btn-comprehension" onclick="showGrammarQuestions()">Next</button>
+  </div>
 
-    <div id="grammar-section" class="question-container" style="display: none;">
-        <h3>Grammar Questions:</h3>
-        <div id="question-text"></div>
-        <div id="answer-buttons" class="answer-buttons">
-            <button id="answer0" onclick="checkAnswer(0)"></button>
-            <button id="answer1" onclick="checkAnswer(1)"></button>
-            <button id="answer2" onclick="checkAnswer(2)"></button>
-            <button id="answer3" onclick="checkAnswer(3)"></button>
-        </div>
-        <div id="result"></div>
-        <button id="prev-btn" onclick="goToPrevious()">Previous</button>
-        <button id="next-btn" onclick="goToNext()">Next</button>
-        <button id="submit-btn" onclick="submitQuiz()">Submit</button>
+  <div id="grammar-section" class="question-container" style="display: none;">
+    <h3>Grammar Questions:</h3>
+    <div id="question-text"></div>
+    <div id="answer-buttons" class="answer-buttons">
+      <button id="answer0" onclick="checkAnswer(0)"></button>
+      <button id="answer1" onclick="checkAnswer(1)"></button>
+      <button id="answer2" onclick="checkAnswer(2)"></button>
+      <button id="answer3" onclick="checkAnswer(3)"></button>
     </div>
+    <div id="result"></div>
+    <button id="prev-btn" onclick="goToPrevious()">Previous</button>
+    <button id="next-btn" onclick="goToNext()">Next</button>
+    <button id="submit-btn" onclick="submitQuiz()">Submit</button>
+  </div>
 
-    <script src="Eng1_p4_quiz.js"></script>
+  <script src="Eng1_p4_quiz.js"></script>
 </body>
 </html>

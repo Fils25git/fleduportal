@@ -1,9 +1,24 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
+#answer-buttons {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+#answer-buttons button { width: 70%;
+                       }
 .question-container {
-    margin-top: 50px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
 }
 .header, .footer {
     background-color: #6c52f0;
@@ -62,4 +77,14 @@ body {
 }
 #comprehension-section, #grammar-section {
     display: none; /* Initially hidden */
+}
+button { 
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    border: 1px solid #ddd; }
+button:hover { 
+    background-color: #f0f0f0;
 }

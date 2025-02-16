@@ -45,7 +45,9 @@ body {
     margin-top: auto;
     width: 50%;
 }
-#next-btn,#prev-btn{
+#next-btn, #prev-btn, #submit-btn {
+    margin-top: 20px;
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(234, 14, 120);

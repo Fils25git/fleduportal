@@ -26,6 +26,40 @@ let currentQuestionIndex = 0;
 let score = 0;
 let answeredQuestions = new Set();
 
+// Show Comprehension questions
+function showComprehensionQuestions() {
+    document.getElementById('text-section').style.display = 'none';
+    document.getElementById('comprehension-section').style.display = 'block';
+    
+    const comprehensionQuestions = [
+        "What was missing at the beginning of the story?",
+        "Where did Tom look for his pencil?",
+        "What did the pencil say?",
+        "Where did the pencil hide?",
+        "How did Tom convince the pencil to come back?"
+    ];
+
+    let htmlContent = "";
+    comprehensionQuestions.forEach((question, index) => {
+        htmlContent += `
+            <div>
+                <p>${index + 1}. ${question}</p>
+                <input type="text" id="comprehension-answer-${index}" />
+            </div>
+        `;
+    });
+    document.getElementById('comprehension-questions').innerHTML = htmlContent;
+}
+
+// Show Grammar questions after comprehension
+function showGrammarQuestions() {
+    document.getElementById('comprehension-section').style.display = 'none';
+    document.getElementById('grammar-section').style.display = 'block';
+    
+    loadQuestion();
+}
+
+// Load the grammar question based on index
 function loadQuestion() {
     const question = questions[currentQuestionIndex];
     document.getElementById('question-text').innerText = question.question;
@@ -61,7 +95,6 @@ function disableAnsweredButtons() {
 
 function checkAnswer(answerIndex) {
     const correctAnswer = questions[currentQuestionIndex].correct;
-    const resultElement = document.getElementById('result');
 
     // Mark the selected answer
     if (answerIndex === correctAnswer) {

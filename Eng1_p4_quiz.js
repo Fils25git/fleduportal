@@ -26,10 +26,11 @@ const grammarQuestions = [
 
 let currentGrammarIndex = 0;
 let score = 0;
+let answeredComprehensionQuestions = new Array(comprehensionQuestions.length).fill(false);
+let answeredGrammarQuestions = new Array(grammarQuestions.length).fill(false);
 
-// ✅ Fix for "Next" button after passage
+// Show Comprehension Questions
 function showComprehensionQuestions() {
-    console.log("Next button clicked! Showing comprehension questions.");
     document.getElementById('text-section').style.display = 'none';
     document.getElementById('comprehension-section').style.display = 'block';
 
@@ -48,27 +49,25 @@ function showComprehensionQuestions() {
     document.getElementById('comprehension-questions').innerHTML = htmlContent;
 }
 
-// ✅ Comprehension Answer Checking
+// Check Comprehension Answer
 function checkComprehensionAnswer(questionIndex, answerIndex) {
+    if (answeredComprehensionQuestions[questionIndex]) return;
+
     const correctAnswer = comprehensionQuestions[questionIndex].correct;
     let buttons = document.querySelectorAll(`#comprehension-questions div:nth-child(${questionIndex + 1}) button`);
-    
-    buttons[answerIndex].style.color = (answerIndex === correctAnswer) ? "green" : "red";
+    buttons[answerIndex].style.backgroundColor = (answerIndex === correctAnswer) ? "green" : "red";
 
-    if (questionIndex === comprehensionQuestions.length - 1) {
-        setTimeout(showGrammarQuestions, 1000);
-    }
+    answeredComprehensionQuestions[questionIndex] = true;
 }
 
-// ✅ Show Grammar Questions
+// Show Grammar Questions
 function showGrammarQuestions() {
-    console.log("Switching to grammar questions.");
     document.getElementById('comprehension-section').style.display = 'none';
     document.getElementById('grammar-section').style.display = 'block';
     loadGrammarQuestion();
 }
 
-// ✅ Load Grammar Question
+// Load Grammar Question
 function loadGrammarQuestion() {
     const question = grammarQuestions[currentGrammarIndex];
     document.getElementById('question-text').innerText = question.question;
@@ -78,27 +77,37 @@ function loadGrammarQuestion() {
     document.getElementById('answer3').innerText = `D) ${question.answers[3]}`;
 }
 
-// ✅ Check Grammar Answer
+// Check Grammar Answer
 function checkAnswer(answerIndex) {
+    if (answeredGrammarQuestions[currentGrammarIndex]) return;
+
     const correctAnswer = grammarQuestions[currentGrammarIndex].correct;
     let buttons = document.querySelectorAll("#answer-buttons button");
-    
-    buttons[answerIndex].style.color = (answerIndex === correctAnswer) ? "green" : "red";
+    buttons[answerIndex].style.backgroundColor = (answerIndex === correctAnswer) ? "green" : "red";
+    answeredGrammarQuestions[currentGrammarIndex] = true;
 
+    // Move to next question after answering
     if (currentGrammarIndex < grammarQuestions.length - 1) {
-        setTimeout(() => {
-            currentGrammarIndex++;
-            loadGrammarQuestion();
-        }, 1000);
-    } else {
-        setTimeout(submitQuiz, 1000);
+        currentGrammarIndex++;
+        setTimeout(loadGrammarQuestion, 1000);
     }
 }
 
-// ✅ Submit Quiz and Show Score
+// Submit Quiz and Show Result
 function submitQuiz() {
+    score = 0;
+
+    // Calculate score
+    comprehensionQuestions.forEach((q, i) => {
+        if (answeredComprehensionQuestions[i]) score++;
+    });
+
+    grammarQuestions.forEach((q, i) => {
+        if (answeredGrammarQuestions[i]) score++;
+    });
+
     document.getElementById('grammar-section').style.display = 'none';
-    document.getElementById('result').innerHTML = `Your score is: ${score} / ${grammarQuestions.length + comprehensionQuestions.length}`;
+    document.getElementById('result').innerHTML = `Your score is: ${score} / ${comprehensionQuestions.length + grammarQuestions.length}`;
 }
 
 console.log("Quiz script loaded successfully.");

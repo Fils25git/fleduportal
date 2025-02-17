@@ -9,6 +9,7 @@ body {
     min-height: 100vh;
     background-color: #f9f9f9;
 }
+
 .question-container {
     text-align: center;
     width: 90%;
@@ -18,6 +19,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 button {
     padding: 12px;
     margin: 5px 0;
@@ -29,28 +31,56 @@ button {
     border: 1px solid #ddd;
     transition: background-color 0.3s ease;
 }
+
 button:hover {
     background-color: #f0f0f0;
 }
+
 .green {
     background-color: #4CAF50 !important;
     color: white !important;
 }
+
 .red {
     background-color: #f44336 !important;
     color: white !important;
 }
-#answer-buttons, #comprehension-questions {
-    display: flex; 
-    flex-direction: column; 
+
+#answer-buttons {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     width: 100%;
 }
+
+#next-prev-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 90%;
+    max-width: 300px;
+}
+
+#submit-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+#next-btn, #prev-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+#next-btn {
+    margin-right: 10px;
+}
+
 @media (max-width: 600px) {
     .question-container {
         width: 95%;
         padding: 15px;
     }
+
     button {
         font-size: 14px;
         padding: 10px;

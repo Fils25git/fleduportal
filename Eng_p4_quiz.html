@@ -7,34 +7,51 @@
   <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">
   <meta name="author" content="Fils Lambert IRATURINZE">
   <link rel="stylesheet" href="style.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-  <title> English Test Selection P4</title><!DOCTYPE html>
+  <title>English Test P4</title>
 </head>
 <body>
 
-  <div class="container">
-    <h2>Welcome to FL EduPortal!</h2>
-    <p>Please select the test:</p>
-
-    <div class="subject-buttons">
-      <button onclick="location.href='Eng1_p4_quiz.html'">TAP FOR ENG TEST 1</button>
-      <button onclick="location.href='not yet.html'">TAP FOR ENG TEST 2</button>
-      <button onclick="location.href='not yet.html'">TAP FOR ENG TEST 3</button>
-      <button onclick="location.href='not yet.html'">TAP FOR ENG TEST 4</button>
-      <button onclick="location.href='not yet.html'">TAP FOR ENG TEST 5</button>
-      <button onclick="location.href='not yet.html'">TAP FOR ENG TEST 6</button>
-      <button onclick="window.history.back()" style="background-color: bisque; color: black;">🔙 Go Back</button>
-    </div>
+  <div id="text-section" class="question-container">
+    <h3>Read the passage and then tap "Next" to answer questions</h3>
+    <h4><u>Title: The Day the Pencil Ran Away!</u></h4>
+    <p>
+      One morning, Tom was ready to start his test. He opened his pencil case, but—Oh no! His pencil was gone!
+      <br><br>
+      “Where is my pencil?” Tom asked. He looked under his book, inside his bag, and even in his shoe! But it was nowhere to be found.
+      <br><br>
+      Suddenly, he heard a tiny voice whisper, “I’m tired of writing! I need a break!”
+      <br><br>
+      Tom jumped. Was his pencil talking?
+      <br><br>
+      The pencil rolled off the table and hid under the teacher’s desk.
+      <br><br>
+      Tom laughed. “Come back, Pencil! If you help me finish my test, I will give you a long rest!”
+      <br><br>
+      The pencil thought for a moment and then rolled back to Tom.
+      <br><br>
+      “Okay, but no chewing on me this time!” it said.
+      <br><br>
+      Tom smiled and started his test.
+    </p>
+    <button id="next-btn" onclick="showComprehensionQuestions()">Next</button>
   </div>
-  <footer class="container">
-    <h3><u>Contacts</u></h3>
-    <p>Email: fleduportal25@gmail.com<br>Phone: +250739911090</p> <br>
-    <nav>
-        <a href="1.html"> About US</a> 
-    </nav>
-</footer>
+
+  <div id="comprehension-section" class="question-container" style="display: none;">
+    <h3>Comprehension Questions:</h3>
+    <div id="comprehension-questions"></div>
+    <button id="next-btn-comprehension" onclick="showGrammarQuestions()">Next</button>
+  </div>
+
+  <div id="grammar-section" class="question-container" style="display: none;">
+    <h3>Grammar Questions:</h3>
+    <p id="question-text"></p>
+    <div id="answer-buttons"></div>
+    <div id="result"></div>
+    <button id="prev-btn" onclick="goToPrevious()">Previous</button>
+    <button id="next-btn" onclick="goToNext()">Next</button>
+    <button id="submit-btn" onclick="submitQuiz()" style="display: none;">Submit</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -7,20 +7,20 @@ const comprehensionQuestions = [
 ];
 
 const grammarQuestions = [
-    { question: "1. Choose the correct plural form of the word 'child':", answers: ["childs", "childes", "children", "childrens"], correct: 2 },
-    { question: "2. Which of the following is a synonym for 'happy'?", answers: ["Sad", "Joyful", "Angry", "Tired"], correct: 1 },
-    { question: "3. Identify the adjective in the sentence: 'The tall boy runs fast.'", answers: ["tall", "boy", "runs", "fast"], correct: 0 },
-    { question: "4. Choose the correct past tense of the verb 'go':", answers: ["goed", "went", "gone", "going"], correct: 1 },
+    { question: "1. Choose the correct plural form of 'child':", answers: ["childs", "childes", "children", "childrens"], correct: 2 },
+    { question: "2. Which word is a synonym for 'happy'?", answers: ["Sad", "Joyful", "Angry", "Tired"], correct: 1 },
+    { question: "3. Identify the adjective in: 'The tall boy runs fast.'", answers: ["tall", "boy", "runs", "fast"], correct: 0 },
+    { question: "4. Choose the past tense of 'go':", answers: ["goed", "went", "gone", "going"], correct: 1 },
     { question: "5. Which sentence is punctuated correctly?", answers: ['"Can I have some water."', '"What time is it?"', '"I am hungry!"', '"She said, Hello."'], correct: 1 },
-    { question: "6. Fill in the blank with the correct preposition: 'She is sitting ___ the chair.'", answers: ["in", "on", "at", "under"], correct: 1 },
+    { question: "6. Fill in the blank: 'She is sitting ___ the chair.'", answers: ["in", "on", "at", "under"], correct: 1 },
     { question: "7. Choose the correct conjunction: 'I want to play, ___ it is raining.'", answers: ["and", "but", "or", "so"], correct: 1 },
-    { question: "8. What is the correct order of the days of the week starting from Monday?", answers: ["Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday", "Monday, Wednesday, Tuesday, Thursday, Friday, Sunday, Saturday", "Monday, Tuesday, Thursday, Wednesday, Friday, Saturday, Sunday", "Monday, Tuesday, Wednesday, Friday, Thursday, Saturday, Sunday"], correct: 0 },
-    { question: "9. Which of the following is a question?", answers: ["She is reading a book.", "Where are you going?", "They are playing football.", "I have a new pencil."], correct: 1 },
-    { question: "10. Fill in the blank with the correct article: 'I saw ___ elephant at the zoo.'", answers: ["a", "an", "the", "no article needed"], correct: 1 },
-    { question: "11. Choose the correct form of the verb: 'She ___ to school every day.'", answers: ["go", "goes", "going", "gone"], correct: 1 },
+    { question: "8. Correct order of the days of the week from Monday:", answers: ["Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday", "Monday, Wednesday, Tuesday, Thursday, Friday, Sunday, Saturday", "Monday, Tuesday, Thursday, Wednesday, Friday, Saturday, Sunday", "Monday, Tuesday, Wednesday, Friday, Thursday, Saturday, Sunday"], correct: 0 },
+    { question: "9. Which is a question?", answers: ["She is reading a book.", "Where are you going?", "They are playing football.", "I have a new pencil."], correct: 1 },
+    { question: "10. Fill in the blank: 'I saw ___ elephant at the zoo.'", answers: ["a", "an", "the", "no article needed"], correct: 1 },
+    { question: "11. Choose the correct verb form: 'She ___ to school every day.'", answers: ["go", "goes", "going", "gone"], correct: 1 },
     { question: "12. Which word is a noun?", answers: ["Quickly", "Beautiful", "Happiness", "Run"], correct: 2 },
     { question: "13. Identify the correct sentence:", answers: ['"He don\'t like apples."', '"He doesn\'t likes apples."', '"He doesn\'t like apples."', '"He don\'t likes apples."'], correct: 2 },
-    { question: "14. Fill in the blank with the correct pronoun: 'Maria and ___ are going to the market.'", answers: ["me", "I", "mine", "my"], correct: 1 },
+    { question: "14. Fill in the blank: 'Maria and ___ are going to the market.'", answers: ["me", "I", "mine", "my"], correct: 1 },
     { question: "15. Choose the correct spelling:", answers: ["Recieve", "Receive", "Recive", "Receeve"], correct: 1 }
 ];
 
@@ -28,6 +28,7 @@ let currentComprehensionIndex = 0;
 let currentGrammarIndex = 0;
 let score = 0;
 
+// Display comprehension questions
 function showComprehensionQuestions() {
     document.getElementById('text-section').style.display = 'none';
     document.getElementById('comprehension-section').style.display = 'block';
@@ -37,59 +38,54 @@ function showComprehensionQuestions() {
         htmlContent += `
             <div>
                 <p>${q.question}</p>
-                <button onclick="checkComprehensionAnswer(${index}, 0)">${q.answers[0]}</button>
-                <button onclick="checkComprehensionAnswer(${index}, 1)">${q.answers[1]}</button>
-                <button onclick="checkComprehensionAnswer(${index}, 2)">${q.answers[2]}</button>
-                <button onclick="checkComprehensionAnswer(${index}, 3)">${q.answers[3]}</button>
+                ${q.answers.map((answer, i) => 
+                    `<button class="answer-btn" onclick="checkComprehensionAnswer(${index}, ${i}, this)">${answer}</button>`).join('')}
             </div>
         `;
     });
     document.getElementById('comprehension-questions').innerHTML = htmlContent;
 }
 
-function checkComprehensionAnswer(questionIndex, answerIndex) {
+// Check comprehension answers
+function checkComprehensionAnswer(questionIndex, answerIndex, button) {
     const correctAnswer = comprehensionQuestions[questionIndex].correct;
-    if (answerIndex === correctAnswer) {
-        score++;
-    }
-
-    // Move to grammar questions after answering comprehension questions
-    if (questionIndex === comprehensionQuestions.length - 1) {
-        showGrammarQuestions();
-    }
+    button.classList.add(answerIndex === correctAnswer ? 'green' : 'red');
 }
 
+// Show grammar questions after comprehension
 function showGrammarQuestions() {
     document.getElementById('comprehension-section').style.display = 'none';
     document.getElementById('grammar-section').style.display = 'block';
-
     loadGrammarQuestion();
 }
 
+// Load grammar question
 function loadGrammarQuestion() {
     const question = grammarQuestions[currentGrammarIndex];
     document.getElementById('question-text').innerText = question.question;
-    document.getElementById('answer0').innerText = `A) ${question.answers[0]}`;
-    document.getElementById('answer1').innerText = `B) ${question.answers[1]}`;
-    document.getElementById('answer2').innerText = `C) ${question.answers[2]}`;
-    document.getElementById('answer3').innerText = `D) ${question.answers[3]}`;
+    document.getElementById('answer-buttons').innerHTML = question.answers.map((answer, i) =>
+        `<button class="answer-btn" onclick="checkAnswer(${i}, this)">${answer}</button>`
+    ).join('');
 }
 
-function checkAnswer(answerIndex) {
+// Check grammar answer
+function checkAnswer(answerIndex, button) {
     const correctAnswer = grammarQuestions[currentGrammarIndex].correct;
-    if (answerIndex === correctAnswer) {
-        score++;
-    }
+    button.classList.add(answerIndex === correctAnswer ? 'green' : 'red');
 
     // Move to next question
-    if (currentGrammarIndex < grammarQuestions.length - 1) {
-        currentGrammarIndex++;
-        loadGrammarQuestion();
-    } else {
-        submitQuiz();
-    }
+    setTimeout(() => {
+        if (answerIndex === correctAnswer) score++;
+        if (currentGrammarIndex < grammarQuestions.length - 1) {
+            currentGrammarIndex++;
+            loadGrammarQuestion();
+        } else {
+            submitQuiz();
+        }
+    }, 800);
 }
 
+// Submit quiz
 function submitQuiz() {
     document.getElementById('grammar-section').style.display = 'none';
     document.getElementById('result').innerHTML = `Your score is: ${score} / ${grammarQuestions.length + comprehensionQuestions.length}`;

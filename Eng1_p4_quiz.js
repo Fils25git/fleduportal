@@ -39,10 +39,10 @@ function showComprehensionQuestions() {
         htmlContent += `
             <div>
                 <p>${q.question}</p>
-                <button onclick="checkComprehensionAnswer(${index}, 0)">${q.answers[0]}</button>
-                <button onclick="checkComprehensionAnswer(${index}, 1)">${q.answers[1]}</button>
-                <button onclick="checkComprehensionAnswer(${index}, 2)">${q.answers[2]}</button>
-                <button onclick="checkComprehensionAnswer(${index}, 3)">${q.answers[3]}</button>
+                <button class="answer-btn" onclick="checkComprehensionAnswer(${index}, 0)">${q.answers[0]}</button>
+                <button class="answer-btn" onclick="checkComprehensionAnswer(${index}, 1)">${q.answers[1]}</button>
+                <button class="answer-btn" onclick="checkComprehensionAnswer(${index}, 2)">${q.answers[2]}</button>
+                <button class="answer-btn" onclick="checkComprehensionAnswer(${index}, 3)">${q.answers[3]}</button>
             </div>
         `;
     });
@@ -110,4 +110,17 @@ function submitQuiz() {
     document.getElementById('result').innerHTML = `Your score is: ${score} / ${comprehensionQuestions.length + grammarQuestions.length}`;
 }
 
-console.log("Quiz script loaded successfully.");
+// Navigation Functions (Next and Prev)
+function goToNext() {
+    if (currentGrammarIndex < grammarQuestions.length - 1) {
+        currentGrammarIndex++;
+        loadGrammarQuestion();
+    }
+}
+
+function goToPrevious() {
+    if (currentGrammarIndex > 0) {
+        currentGrammarIndex--;
+        loadGrammarQuestion();
+    }
+}

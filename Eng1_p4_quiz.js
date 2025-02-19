@@ -1,171 +1,178 @@
-let currentQuestionIndex = 0; // Track the current question index
-let score = 0; // Track the user's score
-let comprehensionQuestions = []; // Store comprehension questions
-let grammarQuestions = []; // Store grammar questions
+let currentQuestionIndex = 0;
+let score = 0;
 
-// Function to display the comprehension questions section
+const comprehensionQuestions = [
+  {
+    question: "Where was Tom looking for his pencil?",
+    options: ["Under the book", "In his bag", "In his shoe", "All of the above"],
+    correctAnswerIndex: 3
+  },
+  {
+    question: "What did the pencil say?",
+    options: ["I need a break", "I'm lost", "I can't find my way", "I want to be sharpened"],
+    correctAnswerIndex: 0
+  },
+  {
+    question: "What did Tom offer the pencil?",
+    options: ["A new case", "A long rest", "A new pencil", "A pencil sharpener"],
+    correctAnswerIndex: 1
+  },
+  {
+    question: "Where did the pencil hide?",
+    options: ["Under the table", "Under the teacher’s desk", "In the drawer", "Under the book"],
+    correctAnswerIndex: 1
+  },
+  {
+    question: "How did Tom get the pencil back?",
+    options: ["By calling it", "By promising a long rest", "By searching more", "By finding it in his bag"],
+    correctAnswerIndex: 1
+  }
+];
+
+const grammarQuestions = [
+  {
+    question: "Choose the correct verb form: Tom ___ his pencil.",
+    options: ["find", "finds", "found", "finding"],
+    correctAnswerIndex: 2
+  },
+  {
+    question: "Which sentence is correct?",
+    options: ["Tom was finding his pencil.", "Tom find his pencil.", "Tom finds his pencil.", "Tom is finding his pencil."],
+    correctAnswerIndex: 2
+  },
+  {
+    question: "Choose the correct preposition: The pencil is ___ the book.",
+    options: ["on", "in", "under", "beside"],
+    correctAnswerIndex: 2
+  },
+  {
+    question: "What is the correct article? ___ pencil is on the table.",
+    options: ["A", "An", "The", "Some"],
+    correctAnswerIndex: 1
+  },
+  {
+    question: "Which word is a noun?",
+    options: ["run", "pencil", "quick", "happily"],
+    correctAnswerIndex: 1
+  },
+  {
+    question: "Choose the correct tense: Tom ___ a pencil case.",
+    options: ["has", "have", "had", "having"],
+    correctAnswerIndex: 0
+  },
+  {
+    question: "Which sentence is a question?",
+    options: ["Is the pencil on the table?", "Tom found the pencil.", "The pencil is missing.", "Tom is writing."],
+    correctAnswerIndex: 0
+  },
+  {
+    question: "Which sentence uses the past tense?",
+    options: ["Tom is writing.", "Tom writes.", "Tom wrote.", "Tom is writing a test."],
+    correctAnswerIndex: 2
+  },
+  {
+    question: "Choose the correct adverb: Tom writes ___.",
+    options: ["quickly", "quick", "quickness", "quicker"],
+    correctAnswerIndex: 0
+  },
+  {
+    question: "What is the correct conjunction? Tom ___ his pencil, and then he started writing.",
+    options: ["but", "and", "because", "or"],
+    correctAnswerIndex: 1
+  },
+  {
+    question: "Choose the correct possessive adjective: This is ___ pencil.",
+    options: ["my", "his", "her", "their"],
+    correctAnswerIndex: 0
+  },
+  {
+    question: "What is the correct preposition? The pencil is ___ the case.",
+    options: ["in", "on", "under", "beside"],
+    correctAnswerIndex: 0
+  },
+  {
+    question: "Which word is an adjective?",
+    options: ["quickly", "happily", "fast", "slow"],
+    correctAnswerIndex: 3
+  },
+  {
+    question: "Choose the correct comparative form: Tom is ___ than the other students.",
+    options: ["more smarter", "more smart", "smarter", "most smart"],
+    correctAnswerIndex: 2
+  },
+  {
+    question: "Which sentence is in the future tense?",
+    options: ["Tom is writing his test.", "Tom writes his test.", "Tom will write his test.", "Tom wrote his test."],
+    correctAnswerIndex: 2
+  }
+];
+
 function showComprehensionQuestions() {
-    const storyText = document.getElementById('story-text');
-    const comprehensionSection = document.getElementById('comprehension-section');
-    const textSection = document.getElementById('text-section');
-
-    textSection.style.display = 'none';
-    comprehensionSection.style.display = 'block';
-
-    // Load comprehension questions
-    comprehensionQuestions = [
-        {
-            question: 'What did Tom lose?',
-            answers: ['His pencil', 'His book', 'His eraser', 'His bag'],
-            correct: 0
-        },
-        {
-            question: 'Where did the pencil hide?',
-            answers: ['Under the table', 'Under the teacher’s desk', 'In the bag', 'Behind the book'],
-            correct: 1
-        },
-        {
-            question: 'What did Tom promise the pencil?',
-            answers: ['To give it a long rest', 'To give it a sharpener', 'To throw it away', 'To chew on it'],
-            correct: 0
-        }
-    ];
-
-    // Display comprehension questions
-    const comprehensionQuestionsContainer = document.getElementById('comprehension-questions');
-    comprehensionQuestionsContainer.innerHTML = '';
-    
-    comprehensionQuestions.forEach((question, index) => {
-        const questionElement = document.createElement('div');
-        questionElement.classList.add('question');
-        
-        const questionText = document.createElement('h4');
-        questionText.innerText = question.question;
-        questionElement.appendChild(questionText);
-
-        question.answers.forEach((answer, answerIndex) => {
-            const answerButton = document.createElement('button');
-            answerButton.innerText = answer;
-            answerButton.onclick = () => checkComprehensionAnswer(index, answerIndex);
-            questionElement.appendChild(answerButton);
-        });
-
-        comprehensionQuestionsContainer.appendChild(questionElement);
-    });
+  const question = comprehensionQuestions[currentQuestionIndex];
+  document.getElementById('comprehension-questions').innerHTML = `
+    <h3>${question.question}</h3>
+    ${question.options.map((option, index) => `
+      <button class="answer-button" onclick="checkAnswer('comprehension', ${index})">${option}</button>
+    `).join('')}
+  `;
+  document.getElementById('next-btn').style.display = 'block';
 }
 
-// Function to check the selected comprehension answer
-function checkComprehensionAnswer(index, answerIndex) {
-    const question = comprehensionQuestions[index];
-    const buttons = document.querySelectorAll(`#comprehension-questions .question:nth-child(${index + 1}) button`);
-    const selectedButton = buttons[answerIndex];
-
-    // Check if the answer is correct
-    if (answerIndex === question.correct) {
-        selectedButton.classList.add('green');
-        score++;
-        showMotivation(true);  // Show positive motivation
-    } else {
-        selectedButton.classList.add('red');
-        showMotivation(false);  // Show negative motivation
-    }
-
-    // Disable all buttons after the answer is selected
-    buttons.forEach(button => button.disabled = true);
-    document.getElementById('next-btn-comprehension').style.display = 'block';
-}
-
-// Function to move to the grammar section after answering comprehension questions
 function showGrammarQuestions() {
-    const comprehensionSection = document.getElementById('comprehension-section');
-    const grammarSection = document.getElementById('grammar-section');
-    const nextBtnComprehension = document.getElementById('next-btn-comprehension');
-
-    comprehensionSection.style.display = 'none';
-    grammarSection.style.display = 'block';
-    nextBtnComprehension.style.display = 'none';
-
-    // Load grammar questions
-    grammarQuestions = [
-        {
-            question: 'Which of the following is correct?',
-            answers: ['I are learning', 'You is learning', 'I am learning', 'We was learning'],
-            correct: 2
-        },
-        {
-            question: 'Which word is a noun?',
-            answers: ['Run', 'Quickly', 'Jump', 'Pencil'],
-            correct: 3
-        }
-    ];
-
-    // Display grammar questions
-    const grammarQuestionsContainer = document.getElementById('question-text');
-    grammarQuestionsContainer.innerHTML = '';
-    
-    grammarQuestions.forEach((question, index) => {
-        const questionElement = document.createElement('div');
-        questionElement.classList.add('question');
-        
-        const questionText = document.createElement('h4');
-        questionText.innerText = question.question;
-        questionElement.appendChild(questionText);
-
-        question.answers.forEach((answer, answerIndex) => {
-            const answerButton = document.createElement('button');
-            answerButton.innerText = answer;
-            answerButton.onclick = () => checkGrammarAnswer(index, answerIndex);
-            questionElement.appendChild(answerButton);
-        });
-
-        grammarQuestionsContainer.appendChild(questionElement);
-    });
-}
-
-// Function to check the selected grammar answer
-function checkGrammarAnswer(index, answerIndex) {
-    const question = grammarQuestions[index];
-    const buttons = document.querySelectorAll(`#question-text .question:nth-child(${index + 1}) button`);
-    const selectedButton = buttons[answerIndex];
-
-    // Check if the answer is correct
-    if (answerIndex === question.correct) {
-        selectedButton.classList.add('green');
-        score++;
-        showMotivation(true);  // Show positive motivation
-    } else {
-        selectedButton.classList.add('red');
-        showMotivation(false);  // Show negative motivation
-    }
-
-    // Disable all buttons after the answer is selected
-    buttons.forEach(button => button.disabled = true);
+  if (currentQuestionIndex >= comprehensionQuestions.length) {
+    const question = grammarQuestions[currentQuestionIndex - comprehensionQuestions.length];
+    document.getElementById('comprehension-questions').innerHTML = `
+      <h3>${question.question}</h3>
+      ${question.options.map((option, index) => `
+        <button class="answer-button" onclick="checkAnswer('grammar', ${index})">${option}</button>
+      `).join('')}
+    `;
     document.getElementById('next-btn').style.display = 'block';
+  }
 }
 
-// Function to handle the previous button
-function goToPrevious() {
-    if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        displayQuestion();
-    }
+function checkAnswer(type, selectedIndex) {
+  let question;
+  if (type === 'comprehension') {
+    question = comprehensionQuestions[currentQuestionIndex];
+  } else {
+    question = grammarQuestions[currentQuestionIndex - comprehensionQuestions.length];
+  }
+
+  const correctAnswerIndex = question.correctAnswerIndex;
+  if (selectedIndex === correctAnswerIndex) {
+    score++;
+    alert("You nailed it!");
+  } else {
+    alert("Oops, that's not right!");
+  }
+
+  document.querySelectorAll('.answer-button').forEach(button => button.disabled = true);
+  document.getElementById('next-btn').disabled = false;
 }
 
-// Function to handle the next button
 function goToNext() {
-    if (currentQuestionIndex < grammarQuestions.length - 1) {
-        currentQuestionIndex++;
-        displayQuestion();
+  if (currentQuestionIndex < comprehensionQuestions.length + grammarQuestions.length - 1) {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < comprehensionQuestions.length) {
+      showComprehensionQuestions();
+    } else {
+      showGrammarQuestions();
     }
+  }
 }
 
-// Function to handle the quiz submission
-function submitQuiz() {
-    const result = document.getElementById('result');
-    result.innerHTML = `<h3>Your Score: ${score} / ${comprehensionQuestions.length + grammarQuestions.length}</h3>`;
+function goToPrevious() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    if (currentQuestionIndex < comprehensionQuestions.length) {
+      showComprehensionQuestions();
+    } else {
+      showGrammarQuestions();
+    }
+  }
+}
 
-    // Display the submit button and disable further interaction
-    document.getElementById('submit-btn').style.display = 'none';
-    document.getElementById('next-btn').style.display = 'none';
-    document.getElementById('prev-btn').style.display = 'none';
+function submitQuiz() {
+  alert(`You completed the quiz! Your score is ${score}/${comprehensionQuestions.length + grammarQuestions.length}.`);
 }

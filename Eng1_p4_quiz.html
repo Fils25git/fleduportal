@@ -15,6 +15,14 @@
 </head>
 <body>
 
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <h1>FL EduPortal</h1>
+      <p>Access exams and learning materials. Learn and grow with us!</p>
+    </div>
+  </header>
+
   <div id="text-section" class="question-container">
     <p id="story-text">
       <h3>Read the following passage and then tap next for answering questions about it</h3>
@@ -57,14 +65,21 @@
       <button id="answer3" onclick="checkAnswer(3)"></button>
     </div>
     <div id="result"></div>
-    <div id="next-prev-container">
-      <button id="prev-btn" onclick="goToPrevious()">Previous</button>
-      <button id="next-btn" onclick="goToNext()">Next</button>
-    </div>
+    <button id="prev-btn" onclick="goToPrevious()">Previous</button>
+    <button id="next-btn" onclick="goToNext()">Next</button>
     <button id="submit-btn" onclick="submitQuiz()">Submit</button>
   </div>
 
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <p>Contact Us:</p>
+      <p>Phone/WhatsApp: +250798652481</p>
+      <p>Email: <a href="mailto:fleduportal25@gmail.com">fleduportal25@gmail.com</a></p>
+    </div>
+  </footer>
+
   <script src="Eng1_p4_quiz.js"></script>
-  <script src="motivation.js"></script> <!-- Link to Motivation.js -->
+  <script src="motivation.js"></script>
 </body>
 </html>

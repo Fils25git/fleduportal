@@ -17,34 +17,17 @@ const grammarQuestions = [
     { question: "What is the correct article? ___ pencil is on the table.", options: ["A", "An", "The", "Some"], correctAnswerIndex: 1 },
     { question: "Which word is a noun?", options: ["run", "pencil", "quick", "happily"], correctAnswerIndex: 1 },
     { question: "Choose the correct tense: Tom ___ a pencil case.", options: ["has", "have", "had", "having"], correctAnswerIndex: 0 },
-    { question: "Which sentence is a question?", options: ["Is the pencil on the table?", "Tom found the pencil.", "The pencil is missing.", "Tom is writing."], correctAnswerIndex: 0 },
-    { question: "Which sentence uses the past tense?", options: ["Tom is writing.", "Tom writes.", "Tom wrote.", "Tom is writing a test."], correctAnswerIndex: 2 },
-    { question: "Choose the correct adverb: Tom writes ___.", options: ["quickly", "quick", "quickness", "quicker"], correctAnswerIndex: 0 },
-    { question: "What is the correct conjunction? Tom ___ his pencil, and then he started writing.", options: ["but", "and", "because", "or"], correctAnswerIndex: 1 },
-    { question: "Choose the correct possessive adjective: This is ___ pencil.", options: ["my", "his", "her", "their"], correctAnswerIndex: 0 },
-    { question: "What is the correct preposition? The pencil is ___ the case.", options: ["in", "on", "under", "beside"], correctAnswerIndex: 0 },
-    { question: "Which word is an adjective?", options: ["quickly", "happily", "fast", "slow"], correctAnswerIndex: 3 },
-    { question: "Choose the correct comparative form: Tom is ___ than the other students.", options: ["more smarter", "more smart", "smarter", "most smart"], correctAnswerIndex: 2 },
-    { question: "Which sentence is in the future tense?", options: ["Tom is writing his test.", "Tom writes his test.", "Tom will write his test.", "Tom wrote his test."], correctAnswerIndex: 2 }
+    { question: "Which sentence is correct?", options: ["The pencil rolling off", "The pencil rolls off", "The pencil rolled off", "The pencil roll off"], correctAnswerIndex: 2 },
+    { question: "What is the opposite of 'finished'?", options: ["started", "done", "continuing", "stopped"], correctAnswerIndex: 2 },
+    { question: "Fill in the blank: He ___ his pencil.", options: ["find", "finded", "found", "finding"], correctAnswerIndex: 2 },
+    { question: "Choose the correct word: Tom looked ___ the book for his pencil.", options: ["on", "in", "under", "beside"], correctAnswerIndex: 2 }
 ];
 
-// Show text section initially
-function showTextSection() {
-    document.getElementById('text-section').style.display = 'block';
-    document.getElementById('comprehension-section').style.display = 'none';
-    document.getElementById('grammar-section').style.display = 'none';
-    document.getElementById('motivation').style.display = 'none'; // Hide motivation section initially
-}
-
-// Show comprehension questions
 function showComprehensionQuestions() {
     document.getElementById('text-section').style.display = 'none';
     document.getElementById('comprehension-section').style.display = 'block';
-    document.getElementById('grammar-section').style.display = 'none';
-    document.getElementById('motivation').style.display = 'none'; // Hide motivation section initially
-
     const question = comprehensionQuestions[currentQuestionIndex];
-    const questionHTML = `
+    let questionHTML = `
         <h3>${question.question}</h3>
         ${question.options.map((option, index) => `
             <button class="answer-button" onclick="checkAnswer('comprehension', ${index})">${option}</button>
@@ -53,15 +36,11 @@ function showComprehensionQuestions() {
     document.getElementById('comprehension-questions').innerHTML = questionHTML;
 }
 
-// Show grammar questions
 function showGrammarQuestions() {
-    document.getElementById('text-section').style.display = 'none';
     document.getElementById('comprehension-section').style.display = 'none';
     document.getElementById('grammar-section').style.display = 'block';
-    document.getElementById('motivation').style.display = 'none'; // Hide motivation section initially
-
     const question = grammarQuestions[currentQuestionIndex - comprehensionQuestions.length];
-    const questionHTML = `
+    let questionHTML = `
         <h3>${question.question}</h3>
         ${question.options.map((option, index) => `
             <button class="answer-button" onclick="checkAnswer('grammar', ${index})">${option}</button>
@@ -86,7 +65,6 @@ function checkAnswer(type, selectedIndex) {
         showMotivationalWords(false); // Show motivational words for wrong answer
     }
 
-    // Disable the buttons after answer is selected
     document.querySelectorAll('.answer-button').forEach(button => button.disabled = true);
     document.getElementById('next-btn').disabled = false;
 }
@@ -103,19 +81,17 @@ function showMotivationalWords(isCorrect) {
 }
 
 function goToNext() {
-    // Move to the next question (either comprehension or grammar)
     currentQuestionIndex++;
     if (currentQuestionIndex < comprehensionQuestions.length) {
         showComprehensionQuestions();
     } else if (currentQuestionIndex < comprehensionQuestions.length + grammarQuestions.length) {
         showGrammarQuestions();
     } else {
-        alert('Quiz finished! Your score: ' + score);
+        submitQuiz();
     }
 }
 
 function goToPrevious() {
-    // Move to the previous question (either comprehension or grammar)
     currentQuestionIndex--;
     if (currentQuestionIndex < comprehensionQuestions.length) {
         showComprehensionQuestions();
@@ -125,5 +101,7 @@ function goToPrevious() {
 }
 
 function submitQuiz() {
+    document.getElementById('grammar-section').style.display = 'none';
+    document.getElementById('motivation').style.display = 'none';
     alert('You have completed the quiz! Final Score: ' + score);
 }

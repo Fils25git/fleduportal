@@ -1,4 +1,4 @@
-/* General Reset and Layout */
+/* General Layout */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,52 +11,20 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Header Styles */
+/* Header */
 header {
-    background-color: #2196F3;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    position: relative;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-}
-
-header p {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #333;
+    background-color: #4CAF50;
     color: white;
     text-align: center;
     padding: 20px;
     width: 100%;
-    position: fixed;
-    bottom: 0;
 }
 
-footer p {
+h1 {
     margin: 0;
-    font-size: 1rem;
 }
 
-footer a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Container for Questions and Content */
+/* Main Content */
 .question-container {
     text-align: center;
     width: 90%;
@@ -68,18 +36,6 @@ footer a:hover {
     margin-top: 20px;
 }
 
-.question-container h3,
-.question-container h4 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-#story-text {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-
-/* Button Styles */
 button {
     padding: 12px;
     margin: 5px 0;
@@ -106,7 +62,6 @@ button:hover {
     color: white !important;
 }
 
-/* Answer Button Layout */
 #answer-buttons {
     display: flex;
     flex-direction: column;
@@ -122,46 +77,37 @@ button:hover {
     max-width: 300px;
 }
 
-/* Navigation Buttons */
-#next-btn, #prev-btn {
-    background-color: #f1f1f1;
-    color: #333;
-    font-size: 14px;
-    border: 1px solid #ddd;
-}
-
 #submit-btn {
     background-color: #2196F3;
     color: white;
-    font-size: 16px;
-    border: 1px solid #ddd;
 }
 
-/* Motivational Text Styles */
-.motivation-text {
-    font-size: 1.1rem;
-    margin-top: 10px;
-    font-style: italic;
+#next-btn, #prev-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+#next-btn {
+    margin-right: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Motivation Section */
+#motivation {
+    font-size: 20px;
+    margin-top: 20px;
     color: #4CAF50;
-}
-
-.motivation-text.negative {
-    color: #f44336;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-    .question-container {
-        width: 95%;
-        padding: 15px;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    footer {
-        padding: 10px;
-    }
 }

@@ -3,58 +3,48 @@ let score = 0;
 let currentSection = 'text'; // to keep track of the current section (text, comprehension, grammar)
 
 const comprehensionQuestions = [
-    { question: "Where was Tom looking for his pencil?", options: ["Under the book", "In his bag", "In his shoe", "All of the above"], correctAnswerIndex: 3 },
-    { question: "What did the pencil say?", options: ["I need a break", "I'm lost", "I can't find my way", "I want to be sharpened"], correctAnswerIndex: 0 },
-    { question: "What did Tom offer the pencil?", options: ["A new case", "A long rest", "A new pencil", "A pencil sharpener"], correctAnswerIndex: 1 },
-    { question: "Where did the pencil hide?", options: ["Under the table", "Under the teacher’s desk", "In the drawer", "Under the book"], correctAnswerIndex: 1 },
-    { question: "How did Tom get the pencil back?", options: ["By calling it", "By promising a long rest", "By searching more", "By finding it in his bag"], correctAnswerIndex: 1 }
+    { question: "Where was Tom looking for his pencil?", options: ["Under the book", "In his bag"], correctAnswerIndex: 0 },
+    { question: "What did the pencil say?", options: ["I need a break", "I'm tired of writing"], correctAnswerIndex: 0 },
+    { question: "What did Tom offer the pencil?", options: ["A long rest", "A new pencil case"], correctAnswerIndex: 0 },
+    { question: "Where did the pencil hide?", options: ["Under the teacher’s desk", "Under the table"], correctAnswerIndex: 0 },
+    { question: "How did Tom get the pencil back?", options: ["By promising a long rest", "By calling it"], correctAnswerIndex: 0 }
 ];
 
 const grammarQuestions = [
-    { question: "Choose the correct verb form: Tom ___ his pencil.", options: ["find", "finds", "found", "finding"], correctAnswerIndex: 2 },
-    { question: "Which sentence is correct?", options: ["Tom was finding his pencil.", "Tom find his pencil.", "Tom finds his pencil.", "Tom is finding his pencil."], correctAnswerIndex: 2 },
-    { question: "Choose the correct preposition: The pencil is ___ the book.", options: ["on", "in", "under", "beside"], correctAnswerIndex: 2 },
-    { question: "What is the correct article? ___ pencil is on the table.", options: ["A", "An", "The", "Some"], correctAnswerIndex: 1 },
-    { question: "Which word is a noun?", options: ["run", "pencil", "quick", "happily"], correctAnswerIndex: 1 },
-    { question: "Choose the correct tense: Tom ___ a pencil case.", options: ["has", "have", "had", "having"], correctAnswerIndex: 0 },
-    { question: "Which sentence is correct?", options: ["The pencil rolling off", "The pencil rolls off", "The pencil rolled off", "The pencil roll off"], correctAnswerIndex: 2 },
-    { question: "What is the opposite of 'finished'?", options: ["started", "done", "continuing", "stopped"], correctAnswerIndex: 2 },
-    { question: "Fill in the blank: He ___ his pencil.", options: ["find", "finded", "found", "finding"], correctAnswerIndex: 2 },
-    { question: "Choose the correct word: Tom looked ___ the book for his pencil.", options: ["on", "in", "under", "beside"], correctAnswerIndex: 2 }
+    { question: "Choose the correct verb form: Tom ___ his pencil.", options: ["find", "found"], correctAnswerIndex: 1 },
+    { question: "Which sentence is correct?", options: ["Tom was finding his pencil.", "Tom finds his pencil."], correctAnswerIndex: 1 },
+    { question: "Choose the correct preposition: The pencil is ___ the book.", options: ["on", "under"], correctAnswerIndex: 1 },
+    { question: "What is the correct article? ___ pencil is on the table.", options: ["An", "A"], correctAnswerIndex: 0 },
+    { question: "Which word is a noun?", options: ["run", "pencil"], correctAnswerIndex: 1 },
+    { question: "Choose the correct tense: Tom ___ a pencil case.", options: ["has", "had"], correctAnswerIndex: 0 },
+    { question: "Which sentence is correct?", options: ["The pencil rolls off", "The pencil rolling off"], correctAnswerIndex: 0 },
+    { question: "What is the opposite of 'finished'?", options: ["started", "continuing"], correctAnswerIndex: 1 },
+    { question: "Fill in the blank: He ___ his pencil.", options: ["found", "finded"], correctAnswerIndex: 0 },
+    { question: "Choose the correct word: Tom looked ___ the book for his pencil.", options: ["on", "under"], correctAnswerIndex: 1 }
 ];
 
 function showComprehensionQuestions() {
     document.getElementById('text-section').style.display = 'none';
     document.getElementById('comprehension-section').style.display = 'block';
-    const question = comprehensionQuestions[currentQuestionIndex];
-    let questionHTML = `
-        <h3>${question.question}</h3>
-        ${question.options.map((option, index) => `
-            <button class="answer-button" onclick="checkAnswer('comprehension', ${index})">${option}</button>
-        `).join('')}
-    `;
+    let questionHTML = comprehensionQuestions.map((question, index) => {
+        return `
+            <div>
+                <h3>${question.question}</h3>
+                ${question.options.map((option, idx) => `
+                    <button class="answer-button" onclick="checkAnswer('comprehension', ${index}, ${idx})">${option}</button>
+                `).join('')}
+            </div>
+        `;
+    }).join('');
     document.getElementById('comprehension-questions').innerHTML = questionHTML;
 }
 
-function showGrammarQuestions() {
-    document.getElementById('comprehension-section').style.display = 'none';
-    document.getElementById('grammar-section').style.display = 'block';
-    const question = grammarQuestions[currentQuestionIndex - comprehensionQuestions.length];
-    let questionHTML = `
-        <h3>${question.question}</h3>
-        ${question.options.map((option, index) => `
-            <button class="answer-button" onclick="checkAnswer('grammar', ${index})">${option}</button>
-        `).join('')}
-    `;
-    document.getElementById('question-text').innerHTML = questionHTML;
-}
-
-function checkAnswer(type, selectedIndex) {
+function checkAnswer(type, questionIndex, selectedIndex) {
     let question;
     if (type === 'comprehension') {
-        question = comprehensionQuestions[currentQuestionIndex];
+        question = comprehensionQuestions[questionIndex];
     } else {
-        question = grammarQuestions[currentQuestionIndex - comprehensionQuestions.length];
+        question = grammarQuestions[questionIndex - comprehensionQuestions.length];
     }
 
     const correctAnswerIndex = question.correctAnswerIndex;
@@ -72,12 +62,25 @@ function checkAnswer(type, selectedIndex) {
 function showMotivationalWords(isCorrect) {
     const motivationDiv = document.getElementById('motivation');
     motivationDiv.style.display = 'block';
-
     if (isCorrect) {
         motivationDiv.innerHTML = `<p class="motivation-text">You nailed it! 🎉</p>`;
     } else {
         motivationDiv.innerHTML = `<p class="motivation-text">Don't worry, try again! 💪</p>`;
     }
+}
+
+function showGrammarQuestions() {
+    alert('Welcome to Grammar Section!');
+    document.getElementById('comprehension-section').style.display = 'none';
+    document.getElementById('grammar-section').style.display = 'block';
+    const question = grammarQuestions[currentQuestionIndex - comprehensionQuestions.length];
+    let questionHTML = `
+        <h3>${question.question}</h3>
+        ${question.options.map((option, index) => `
+            <button class="answer-button" onclick="checkAnswer('grammar', ${index})">${option}</button>
+        `).join('')}
+    `;
+    document.getElementById('question-text').innerHTML = questionHTML;
 }
 
 function goToNext() {
@@ -91,17 +94,9 @@ function goToNext() {
     }
 }
 
-function goToPrevious() {
-    currentQuestionIndex--;
-    if (currentQuestionIndex < comprehensionQuestions.length) {
-        showComprehensionQuestions();
-    } else if (currentQuestionIndex < comprehensionQuestions.length + grammarQuestions.length) {
-        showGrammarQuestions();
-    }
-}
-
 function submitQuiz() {
     document.getElementById('grammar-section').style.display = 'none';
     document.getElementById('motivation').style.display = 'none';
-    alert('You have completed the quiz! Final Score: ' + score);
+    document.getElementById('comprehension-section').style.display = 'none';
+    document.getElementById('score-text').innerHTML = 'Final Score: ' + score;
 }

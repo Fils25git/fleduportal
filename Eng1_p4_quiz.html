@@ -57,13 +57,10 @@
 
     <!-- Grammar Questions Section -->
     <div id="grammar-section" class="question-container" style="display: none;">
-        <h3>Grammar Questions:</h3>
         <div id="question-text"></div>
         <div id="answer-buttons" class="answer-buttons">
-            <button id="answer0" onclick="checkAnswer(0)"></button>
-            <button id="answer1" onclick="checkAnswer(1)"></button>
-            <button id="answer2" onclick="checkAnswer(2)"></button>
-            <button id="answer3" onclick="checkAnswer(3)"></button>
+            <button id="answer0" onclick="checkAnswer('grammar', 0)"></button>
+            <button id="answer1" onclick="checkAnswer('grammar', 1)"></button>
         </div>
         <div id="result"></div>
         <button id="prev-btn" onclick="goToPrevious()">Previous</button>

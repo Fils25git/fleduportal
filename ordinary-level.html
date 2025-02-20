@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Access Ordinary Level secondary school educational resources including textbooks, revision guides, and practice tests on FL EduAcademy. View or download materials easily.">
+    <meta name="keywords" content="Ordinary Level, secondary school, learning resources, FL EduAcademy, textbooks, revision guides, practice tests, download, view online">
+    <meta name="author" content="FL EduAcademy">
+    <title>Ordinary Level Resources - FL EduAcademy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .resource-list {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #f9f9f9;
+        }
+        .resource-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .resource-item h3 {
+            margin-bottom: 10px;
+        }
+        .resource-buttons button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .resource-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="logo.png" alt="FL EduAcademy Logo" style="height: 50px;">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="preprimary.html">Preprimary</a>
+            <a href="primary.html">Primary</a>
+            <a href="ordinary-level.html">Ordinary Level</a>
+            <a href="advanced-level.html">Advanced Level</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Ordinary Level Resources</h1>
+        <p>Browse and access secondary school Ordinary Level educational materials. You can view them online or download them for later.</p>
+        <input type="text" id="searchInput" placeholder="Search resources..." onkeyup="searchResources()" style="width: 100%; padding: 10px; margin-top: 20px; border-radius: 5px; border: 1px solid #ccc;">
+    </section>
+
+    <section class="resource-list" id="resourceList">
+        <div class="resource-item" data-title="Physics - Ordinary Level Textbook">
+            <div>
+                <h3>Physics - Ordinary Level Textbook</h3>
+                <p>A comprehensive physics textbook covering essential topics for Ordinary Level students.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="documents/ordinary_physics_textbook.pdf" target="_blank"><button>View Online</button></a>
+                <a href="documents/ordinary_physics_textbook.pdf" download><button>Download</button></a>
+            </div>
+        </div>
+        <div class="resource-item" data-title="Mathematics - Revision Guide">
+            <div>
+                <h3>Mathematics - Revision Guide</h3>
+                <p>Key revision materials and practice problems for Ordinary Level mathematics.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="documents/ordinary_math_revision_guide.pdf" target="_blank"><button>View Online</button></a>
+                <a href="documents/ordinary_math_revision_guide.pdf" download><button>Download</button></a>
+            </div>
+        </div>
+        <div class="resource-item" data-title="Chemistry - Practice Tests">
+            <div>
+                <h3>Chemistry - Practice Tests</h3>
+                <p>A set of chemistry practice tests designed for Ordinary Level learners to prepare for exams.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="documents/ordinary_chemistry_practice_tests.pdf" target="_blank"><button>View Online</button></a>
+                <a href="documents/ordinary_chemistry_practice_tests.pdf" download><button>Download</button></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Phone/WhatsApp: +250798652481</p>
+        <p>Email: fleduportal25@gmail.com</p>
+        <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function searchResources() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const resources = document.querySelectorAll('.resource-item');
+
+            resources.forEach(resource => {
+                const title = resource.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    resource.style.display = 'flex';
+                } else {
+                    resource.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

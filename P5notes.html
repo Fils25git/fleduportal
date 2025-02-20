@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FL Eduportal - Access exams and learning materials">
+    <meta name="description" content="Access Advanced Level secondary school educational resources including textbooks, revision guides, and practice exams on FL EduAcademy. View or download materials easily.">
     <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">
     <meta name="author" content="Fils Lambert IRATURINZE">
     <link rel="stylesheet" href="style.css">
@@ -11,37 +11,117 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">
-    <title>FL EduPortal - Primary 5 notes</title>
+<title>Advanced Level Resources - FL EduAcademy</title>
     <link rel="stylesheet" href="style.css">
 </head>
+    <style>
+        .resource-list {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #f9f9f9;
+        }
+        .resource-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .resource-item h3 {
+            margin-bottom: 10px;
+        }
+        .resource-buttons button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .resource-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
 <body>
-    <header><h1>FL EduPortal</h1></header>
- <main>
-     <div class="container">
-        <p>Welcome to Primary 5 Learning notes! 🎉
-            We’re excited to help you on your learning journey.</p>
-        <h3>What kind of notes do you want ?</h3>
-        
-        <a href="P5 KINY NOTES BY Tr D'AMOUR.pdf">P5 KINYARWANDA notes</a><br><br>
-        <a href='SET  P5 SUMMARY NOTES 2022-2023.pdf'>P5 SET NOTES</a><br><br>
-        <a href='ACTIVE AD PASSIVE VOICE  AND INDIRECT  SPEECH.docx'>PASSIVE AND ACTIVE VOICE AND INDIRECT SPEECH</a><br><br>
-        <a href="5-Gusoma umwaka wa 5-1.pdf">P5 AGATABO K'INKURU IKINYARWANDA</a><br><br>
-        <a href="P5 RELIGIOUS NOTES 2023.docx">P5 RELIGIOUS NOTES</a><br><br>
-        <a href="religious.pdf">RELIGIOUS NOTES</a><br><br>
-        <a href="P.5 EXCEL ENGLISH .pdf"> P5 EXCEL ENGLISH</a><br><br>
-        <a href="irreg verbs.pdf"> IRREGULAR VERBS</a><br><br>
-        <!--<a href="MK PRECISE ENGLISH SECONDARY GRAMMAR.pdf">MK ENGLISH GRAMMAR</a>-->
-        <a href="Grammaire Progressive du Francais Niveau Intermediaire ( PDFDrive ).pdf"> Grammaire de francais</a>
-        <button onclick="window.history.back()" style="background-color: bisque; color: black;">🔙 Go Back</button>
-    </main>
-</div>
-    <footer class="container">
-        <h3><u>Contacts</u></h3>
-        <p>Email: fleduportal25@gmail.com<br>Phone: +250739911090</p> <br>
+    <header>
+        <a href="index.html">
+            <img src="logo.png" alt="Home" style="height: 50px;">
+        </a>
         <nav>
-            <a href="1.html"> About US</a> 
-            <a href="index.html">Back Home</a>
+            <a href="index.html">Home</a>
+            <a href="preprimary.html">Preprimary</a>
+            <a href="primary.html">Primary</a>
+            <a href="ordinary-level.html">Ordinary Level</a>
+            <a href="advanced-level.html">Advanced Level</a>
         </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Advanced Level Resources</h1>
+        <p>Browse and access secondary school Advanced Level educational materials. You can view them online or download them for later.</p>
+        <input type="text" id="searchInput" placeholder="Search resources..." onkeyup="searchResources()" style="width: 100%; padding: 10px; margin-top: 20px; border-radius: 5px; border: 1px solid #ccc;">
+    </section>
+
+    <section class="resource-list" id="resourceList">
+        <div class="resource-item" data-title="Biology - Advanced Level Textbook">
+            <div>
+                <h3>Biology - Advanced Level Textbook</h3>
+                <p>A comprehensive biology textbook covering key topics for Advanced Level students.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="documents/advanced_biology_textbook.pdf" target="_blank"><button>View Online</button></a>
+                <a href="documents/advanced_biology_textbook.pdf" download><button>Download</button></a>
+            </div>
+        </div>
+        <div class="resource-item" data-title="Mathematics - Problem-Solving Workbook">
+            <div>
+                <h3>Mathematics - Problem-Solving Workbook</h3>
+                <p>Advanced mathematics problems and solutions to aid exam preparation.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="documents/advanced_math_workbook.pdf" target="_blank"><button>View Online</button></a>
+                <a href="documents/advanced_math_workbook.pdf" download><button>Download</button></a>
+            </div>
+        </div>
+        <div class="resource-item" data-title="Physics - Exam Practice Papers">
+            <div>
+                <h3>Physics - Exam Practice Papers</h3>
+                <p>Practice exam papers for Advanced Level physics with detailed solutions.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="documents/advanced_physics_practice_papers.pdf" target="_blank"><button>View Online</button></a>
+                <a href="documents/advanced_physics_practice_papers.pdf" download><button>Download</button></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Phone/WhatsApp: +250798652481</p>
+        <p>Email: fleduportal25@gmail.com</p>
+        <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
     </footer>
+
+    <script>
+        function searchResources() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const resources = document.querySelectorAll('.resource-item');
+
+            resources.forEach(resource => {
+                const title = resource.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    resource.style.display = 'flex';
+                } else {
+                    resource.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

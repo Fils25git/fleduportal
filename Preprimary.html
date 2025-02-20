@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Access preprimary level educational resources including activities, guides, and fun learning materials on FL EduAcademy. View or download materials easily.">
+    <meta name="keywords" content="Preprimary education, learning resources, FL EduAcademy, activities, fun learning, download, view online">
+    <meta name="author" content="FL EduAcademy">
+    <title>Preprimary Resources - FL EduAcademy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .resource-list {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #f9f9f9;
+        }
+        .resource-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .resource-item h3 {
+            margin-bottom: 10px;
+        }
+        .resource-buttons button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .resource-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="logo.png" alt="FL EduAcademy Logo" style="height: 50px;">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="preprimary.html">Preprimary</a>
+            <a href="primary.html">Primary</a>
+            <a href="ordinary-level.html">Ordinary Level</a>
+            <a href="advanced-level.html">Advanced Level</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Preprimary Level Resources</h1>
+        <p>Browse and access preprimary level educational materials. You can view them online or download them for later.</p>
+        <input type="text" id="searchInput" placeholder="Search resources..." onkeyup="searchResources()" style="width: 100%; padding: 10px; margin-top: 20px; border-radius: 5px; border: 1px solid #ccc;">
+    </section>
+
+    <section class="resource-list" id="resourceList">
+        <div class="resource-item" data-title="Alphabet Learning Guide">
+            <div>
+                <h3>Alphabet Learning Guide</h3>
+                <p>A colorful guide designed to help preprimary learners recognize and learn the alphabet.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="documents/alphabet_learning_guide.pdf" target="_blank"><button>View Online</button></a>
+                <a href="documents/alphabet_learning_guide.pdf" download><button>Download</button></a>
+            </div>
+        </div>
+        <div class="resource-item" data-title="Basic Shapes Activity Book">
+            <div>
+                <h3>Basic Shapes Activity Book</h3>
+                <p>Interactive activities and exercises to help young learners identify and understand basic shapes.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="documents/basic_shapes_activity_book.pdf" target="_blank"><button>View Online</button></a>
+                <a href="documents/basic_shapes_activity_book.pdf" download><button>Download</button></a>
+            </div>
+        </div>
+        <div class="resource-item" data-title="Colors and Numbers Workbook">
+            <div>
+                <h3>Colors and Numbers Workbook</h3>
+                <p>Fun and engaging activities focusing on learning colors and counting numbers.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="documents/colors_numbers_workbook.pdf" target="_blank"><button>View Online</button></a>
+                <a href="documents/colors_numbers_workbook.pdf" download><button>Download</button></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Phone/WhatsApp: +250798652481</p>
+        <p>Email: fleduportal25@gmail.com</p>
+        <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function searchResources() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const resources = document.querySelectorAll('.resource-item');
+
+            resources.forEach(resource => {
+                const title = resource.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    resource.style.display = 'flex';
+                } else {
+                    resource.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

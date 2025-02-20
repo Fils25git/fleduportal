@@ -53,7 +53,7 @@
     <header>
         <a href="index.html">
             <img src="logo.png" alt="FL EduAcademy Logo" style="height: 50px;">
-        </a><br>
+        </a>
         <nav>
             <a href="index.html">Home</a>
             <a href="preprimary.html">Preprimary</a>
@@ -66,10 +66,11 @@
     <section class="hero">
         <h1>Primary Level Resources</h1>
         <p>Browse and access primary level educational materials. You can view them online or download them for later.</p>
+        <input type="text" id="searchInput" placeholder="Search resources..." onkeyup="searchResources()" style="width: 100%; padding: 10px; margin-top: 20px; border-radius: 5px; border: 1px solid #ccc;">
     </section>
 
-    <section class="resource-list">
-        <div class="resource-item">
+    <section class="resource-list" id="resourceList">
+        <div class="resource-item" data-title="Mathematics - Grade 4 Workbook">
             <div>
                 <h3>Mathematics - Grade 4 Workbook</h3>
                 <p>A comprehensive workbook covering key topics in Grade 4 Mathematics.</p>
@@ -79,7 +80,7 @@
                 <a href="documents/grade4_math_workbook.pdf" download><button>Download</button></a>
             </div>
         </div>
-        <div class="resource-item">
+        <div class="resource-item" data-title="English - Reading Comprehension Guide">
             <div>
                 <h3>English - Reading Comprehension Guide</h3>
                 <p>Essential reading comprehension passages and exercises for primary learners.</p>
@@ -89,7 +90,7 @@
                 <a href="documents/english_comprehension_guide.pdf" download><button>Download</button></a>
             </div>
         </div>
-        <div class="resource-item">
+        <div class="resource-item" data-title="Science - Primary Level Experiments">
             <div>
                 <h3>Science - Primary Level Experiments</h3>
                 <p>Simple science experiments designed for primary school learners.</p>
@@ -105,6 +106,25 @@
         <p>Phone/WhatsApp: +250798652481</p>
         <p>Email: fleduportal25@gmail.com</p>
         <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
+        <nav>
+            <a href="1.html">About Us</a>
+        </nav>
     </footer>
+
+    <script>
+        function searchResources() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const resources = document.querySelectorAll('.resource-item');
+
+            resources.forEach(resource => {
+                const title = resource.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    resource.style.display = 'flex';
+                } else {
+                    resource.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

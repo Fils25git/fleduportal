@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FL Eduportal - Access exams and learning materials">
+    <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">
+    <meta name="author" content="Fils Lambert IRATURINZE">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+    <title>FL User Selection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+        function navigateToResource() {
+            const categories = document.getElementsByName('category');
+            let selectedCategory = '';
+            for (const category of categories) {
+                if (category.checked) {
+                    selectedCategory = category.value;
+                    break;
+                }
+            }
+            if (selectedCategory) {
+                window.location.href = selectedCategory;
+            } else {
+                alert('Please select a category to continue.');
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="logo.png" alt="FL EduAcademy Logo" style="height: 50px;">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="preprimary.html">Preprimary</a>
+            <a href="primary.html">Primary</a>
+            <a href="ordinary-level.html">Ordinary Level</a>
+            <a href="advanced-level.html">Advanced Level</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Select a Resource Category</h1>
+        <p>Choose the educational level you are interested in and continue to explore resources.</p>
+        <div class="category-selection">
+            <label><input type="radio" name="category" value="preprimary.html"> Preprimary</label><br><br>
+            <label><input type="radio" name="category" value="primary.html"> Primary</label><br><br>
+            <label><input type="radio" name="category" value="ordinary-level.html"> Ordinary Level</label><br><br>
+            <label><input type="radio" name="category" value="advanced-level.html"> Advanced Level</label><br><br>
+            <button onclick="navigateToResource()">Continue</button>
+            <button onclick="goBack()" class="back-button">Back</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>Phone/WhatsApp: +250798652481</p>
+        <p>Email: fleduportal25@gmail.com</p>
+        <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
+    </footer>
+</body>
+</html>

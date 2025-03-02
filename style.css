@@ -19,6 +19,53 @@ header {
     top: 0;
     z-index: 1000;
 }
+/* Style for the hamburger menu */
+.hamburger-menu {
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+/* Navigation menu styling */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+/* Hide menu for small screens */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        padding: 10px;
+        text-align: center;
+    }
+}
+
 
 .hamburger-menu {
     font-size: 24px;
@@ -234,5 +281,287 @@ footer p {
     .feature {
         width: 80%;
         margin-bottom: 30px;
+    }
+}
+.feature { background-color: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    margin: 10px auto;
+ }
+/* Header Styling */
+/* Header Styling */
+header {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #4CAF50;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.hamburger-menu {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.logo {
+    height: 50px;
+}
+
+nav {
+    flex-grow: 1;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #4CAF50;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+    }
+    nav ul.show {
+        display: flex;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+
+header .logo {
+    height: 50px;
+}
+
+nav {
+    position: relative;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Hamburger Menu Styling */
+.hamburger-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+}
+
+/* Welcome Page - Centered Buttons & Descriptions */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.cta-item {
+    text-align: center;
+    max-width: 250px;
+}
+
+.cta-item p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Form Container Styling */
+.form-container {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    margin: 30px auto;
+}
+
+/* Form Title */
+h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-group input:focus {
+    border-color: #5c6bc0;
+    background-color: #fff;
+    outline: none;
+}
+
+/* Button Styling */
+button,
+.btn {
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #4CAF50;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    nav ul.show {
+        display: flex;
+    }
+    /* Center the CTA Buttons */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+    h2 {
+        font-size: 1.6rem;
+    }
+    .btn {
+        font-size: 1rem;
     }
 }

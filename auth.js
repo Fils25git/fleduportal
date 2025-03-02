@@ -46,7 +46,16 @@ document.getElementById("login-form")?.addEventListener("submit", async (e) => {
         return;
     }
 
-   //===============
+ try {
+        console.log("Attempting login with:", email); // Debugging log
+
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+        // Check for errors in the response
+        if (error) {
+            console.error("Error during login:", error.message); // Debugging log
+            throw error;
+        }
 
         // If successful
         window.location.href = "userSelection.html"; 

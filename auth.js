@@ -1,10 +1,10 @@
-// Ensure Supabase is loaded before this script runs
+// Initialize Supabase
 const supabase = window.supabase.createClient(
-    "https://uppmptshwlagdyswdvko.supabase.co", // Supabase URL
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcG1wdHNod2xhZ2R5c3dkdmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4MjA3ODMsImV4cCI6MjA1NjM5Njc4M30.rkXVCQoIun-Pff8APEbP98Cm0FvFt_BKRL81UkXl0IE" // Replace with actual key
+    "https://uppmptshwlagdyswdvko.supabase.co", 
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcG1wdHNod2xhZ2R5c3dkdmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4MjA3ODMsImV4cCI6MjA1NjM5Njc4M30.rkXVCQoIun-Pff8APEbP98Cm0FvFt_BKRL81UkXl0IE"
 );
 
-// Sign Up Function
+// ✅ SIGN UP FUNCTION
 document.getElementById("signup-form")?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -20,13 +20,20 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
     }
 
     try {
+        // Register user in Supabase
         const { data, error } = await supabase.auth.signUp({ email, password });
 
         if (error) throw error;
 
-        await supabase.from("users").insert([ 
+        // Notify user to check email for confirmation
+        alert("A confirmation email has been sent. Please verify your email before logging in.");
+
+        // Optional: Store additional user info in Supabase DB
+        await supabase.from("users").insert([
             { id: data.user.id, first_name: firstName, last_name: lastName, email }
         ]);
+
+        // Redirect to login page
         window.location.href = "login.html";
 
     } catch (error) {
@@ -34,7 +41,7 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
     }
 });
 
-// Login Function
+// ✅ LOGIN FUNCTION (Prevents unconfirmed users from logging in)
 document.getElementById("login-form")?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -46,32 +53,49 @@ document.getElementById("login-form")?.addEventListener("submit", async (e) => {
         return;
     }
 
- try {
-        console.log("Attempting login with:", email); // Debugging log
-
+    try {
+        // Attempt login
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-        // Check for errors in the response
-        if (error) {
-            console.error("Error during login:", error.message); // Debugging log
-            throw error;
+        if (error) throw error;
+
+        // Check if email is confirmed
+        const { data: user } = await supabase.auth.getUser();
+
+        if (!user || !user.user_metadata || !user.user_metadata.email_confirmed_at) {
+            alert("Please confirm your email before logging in.");
+            await supabase.auth.signOut(); // Log user out if not confirmed
+            return;
         }
 
-        // If successful
-        window.location.href = "userSelection.html"; 
+        // Redirect to user dashboard after successful login
+        window.location.href = "userSelection.html";
 
     } catch (error) {
         alert(`Error: ${error.message}`);
     }
 });
 
+// ✅ PASSWORD RESET FUNCTION
+document.getElementById("reset-password")?.addEventListener("click", async () => {
+    const email = prompt("Enter your email to receive a password reset link:");
+    if (email) {
+        try {
+            const { error } = await supabase.auth.resetPasswordForEmail(email);
+            if (error) throw error;
 
-// Password Fields
+            alert("Password reset email sent! Check your inbox.");
+        } catch (error) {
+            alert(`Error: ${error.message}`);
+        }
+    }
+});
+
+// ✅ PASSWORD MATCH CHECK
 const passwordInput = document.getElementById("signup-password");
 const confirmPasswordInput = document.getElementById("confirm-password");
 const passwordMessage = document.getElementById("password-message");
 
-// Real-time password match check
 function checkPasswordMatch() {
     if (passwordInput.value === "" || confirmPasswordInput.value === "") {
         passwordMessage.textContent = "";
@@ -86,21 +110,21 @@ function checkPasswordMatch() {
     }
 }
 
-// Attach event listeners to password fields
+// Attach password match check to input fields
 passwordInput?.addEventListener("input", checkPasswordMatch);
 confirmPasswordInput?.addEventListener("input", checkPasswordMatch);
 
-// Password Reset Function
-document.getElementById("reset-password")?.addEventListener("click", async () => {
-    const email = prompt("Enter your email to receive a password reset link:");
-    if (email) {
-        try {
-            const { error } = await supabase.auth.resetPasswordForEmail(email);
-            if (error) throw new Error(error.message);
+// ✅ CHECK IF USER IS LOGGED IN & EMAIL CONFIRMED (For protected pages)
+async function checkUserStatus() {
+    const { data: { user } } = await supabase.auth.getUser();
 
-            alert("Password reset email sent! Check your inbox.");
-        } catch (error) {
-            alert(`Error: ${error.message}`);
-        }
+    if (!user) {
+        window.location.href = "login.html"; // Redirect to login if not logged in
+    } else if (!user.user_metadata || !user.user_metadata.email_confirmed_at) {
+        alert("Please confirm your email to access this page.");
+        await supabase.auth.signOut(); // Logout unconfirmed user
+        window.location.href = "login.html";
     }
-});
+}
+
+checkUserStatus();

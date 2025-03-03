@@ -3,13 +3,15 @@
 <head>
     <!-- Meta Tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FL EduAcademy - Online Learning Platform">
-    
-    <title>FL EduAcademy</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="logo.png" type="image/png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>FL EduAcademy_log in</title>
+   <meta name="description" content="FL Eduportal - Access exams and learning materials">
+   <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">
+   <meta name="author" content="Fils Lambert IRATURINZE">
+   <link rel="stylesheet" href="style.css">
+   <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
 
     <!-- Supabase Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -45,6 +47,7 @@
     <section class="form-section">
         <div class="form-container">
             <h2>Login to FL EduAcademy</h2>
+            <p id="login-message"></p>
             <form id="login-form">
                 <div class="form-group">
                     <input type="text" id="login-email" name="identifier" placeholder="Enter email or phone number" required>
@@ -65,6 +68,18 @@
         <p>Email:support@fleduacademy.com</p>
         <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
     </footer>
-    <script src="menu.js></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hamburger menu toggle
+            const menuButton = document.querySelector(".hamburger-menu");
+            const menu = document.getElementById("nav-links");
+
+            if (menuButton && menu) {
+                menuButton.addEventListener("click", function () {
+                    menu.classList.toggle("show");
+                });
+            }
+        });
+    </script>
 </body>
 </html>

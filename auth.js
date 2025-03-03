@@ -3,8 +3,13 @@ const supabase = window.supabase.createClient(
     "https://uppmptshwlagdyswdvko.supabase.co", 
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcG1wdHNod2xhZ2R5c3dkdmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4MjA3ODMsImV4cCI6MjA1NjM5Njc4M30.rkXVCQoIun-Pff8APEbP98Cm0FvFt_BKRL81UkXl0IE"
 );
+// Ensure Supabase is loaded before this script runs
+const supabase = window.supabase.createClient(
+    "https://uppmptshwlagdyswdvko.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcG1wdHNod2xhZ2R5c3dkdmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4MjA3ODMsImV4cCI6MjA1NjM5Njc4M30.rkXVCQoIun-Pff8APEbP98Cm0FvFt_BKRL81UkXl0IE"
+);
 
-// ✅ SIGN UP FUNCTION
+// =================== SIGN-UP FUNCTION ===================
 document.getElementById("signup-form")?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -13,85 +18,88 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
     const email = document.getElementById("signup-email").value.trim();
     const password = document.getElementById("signup-password").value;
     const confirmPassword = document.getElementById("confirm-password").value;
+    const form = document.getElementById("signup-form");
+    const messageBox = document.getElementById("signup-message");
 
     if (password !== confirmPassword) {
-        alert("Passwords do not match!");
+        messageBox.textContent = "❌ Passwords do not match!";
+        messageBox.style.color = "red";
+        messageBox.style.display = "block";
         return;
     }
 
     try {
-        // Register user in Supabase
+        // Check if the user already exists
+        const { data: existingUsers, error: checkError } = await supabase
+            .from("users")
+            .select("email")
+            .eq("email", email);
+
+        if (checkError) throw checkError;
+
+        if (existingUsers.length > 0) {
+            messageBox.textContent = "❌ This email is already registered. Please log in.";
+            messageBox.style.color = "red";
+            messageBox.style.display = "block";
+            return;
+        }
+
+        // Proceed with sign-up if the email is not registered
         const { data, error } = await supabase.auth.signUp({ email, password });
 
         if (error) throw error;
 
-        // Notify user to check email for confirmation
-        alert("A confirmation email has been sent. Please verify your email before logging in.");
-
-        // Optional: Store additional user info in Supabase DB
         await supabase.from("users").insert([
             { id: data.user.id, first_name: firstName, last_name: lastName, email }
         ]);
 
-        // Redirect to login page
-        window.location.href = "login.html";
+        // Hide the form and show success message
+        form.style.display = "none";
+        messageBox.textContent = "✅ Signing up has been successful! Please check your inbox for the verification link.";
+        messageBox.style.color = "green";
+        messageBox.style.display = "block";
 
     } catch (error) {
-        alert(`Error: ${error.message}`);
+        messageBox.textContent = `❌ Error: ${error.message}`;
+        messageBox.style.color = "red";
+        messageBox.style.display = "block";
     }
 });
 
-// ✅ LOGIN FUNCTION (Prevents unconfirmed users from logging in)
+// =================== LOGIN FUNCTION ===================
 document.getElementById("login-form")?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const email = document.getElementById("login-email").value.trim();
     const password = document.getElementById("login-password").value;
+    const messageBox = document.getElementById("login-message");
 
     if (!email || !password) {
-        alert("Please fill in both email and password.");
+        messageBox.textContent = "❌ Please fill in both email and password.";
+        messageBox.style.color = "red";
+        messageBox.style.display = "block";
         return;
     }
 
     try {
-        // Attempt login
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
 
-        if (error) throw error;
-
-        // Check if email is confirmed
-        const { data: user } = await supabase.auth.getUser();
-
-        if (!user || !user.user_metadata || !user.user_metadata.email_confirmed_at) {
-            alert("Please confirm your email before logging in.");
-            await supabase.auth.signOut(); // Log user out if not confirmed
+        if (error) {
+            messageBox.textContent = "❌ Incorrect email or password.";
+            messageBox.style.color = "red";
+            messageBox.style.display = "block";
             return;
         }
 
-        // Redirect to user dashboard after successful login
-        window.location.href = "userSelection.html";
-
+        window.location.href = "dashboard.html"; // Redirect on success
     } catch (error) {
-        alert(`Error: ${error.message}`);
+        messageBox.textContent = `❌ Error: ${error.message}`;
+        messageBox.style.color = "red";
+        messageBox.style.display = "block";
     }
 });
 
-// ✅ PASSWORD RESET FUNCTION
-document.getElementById("reset-password")?.addEventListener("click", async () => {
-    const email = prompt("Enter your email to receive a password reset link:");
-    if (email) {
-        try {
-            const { error } = await supabase.auth.resetPasswordForEmail(email);
-            if (error) throw error;
-
-            alert("Password reset email sent! Check your inbox.");
-        } catch (error) {
-            alert(`Error: ${error.message}`);
-        }
-    }
-});
-
-// ✅ PASSWORD MATCH CHECK
+// =================== PASSWORD MATCH CHECK ===================
 const passwordInput = document.getElementById("signup-password");
 const confirmPasswordInput = document.getElementById("confirm-password");
 const passwordMessage = document.getElementById("password-message");
@@ -110,21 +118,45 @@ function checkPasswordMatch() {
     }
 }
 
-// Attach password match check to input fields
 passwordInput?.addEventListener("input", checkPasswordMatch);
 confirmPasswordInput?.addEventListener("input", checkPasswordMatch);
 
-// ✅ CHECK IF USER IS LOGGED IN & EMAIL CONFIRMED (For protected pages)
-async function checkUserStatus() {
-    const { data: { user } } = await supabase.auth.getUser();
+// =================== SHOW/HIDE PASSWORD TOGGLE ===================
+document.querySelectorAll(".toggle-password").forEach((toggle) => {
+    toggle.addEventListener("click", function () {
+        const passwordField = this.previousElementSibling;
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            this.textContent = "🙈"; // Hide icon
+        } else {
+            passwordField.type = "password";
+            this.textContent = "👁️"; // Show icon
+        }
+    });
+});
 
-    if (!user) {
-        window.location.href = "login.html"; // Redirect to login if not logged in
-    } else if (!user.user_metadata || !user.user_metadata.email_confirmed_at) {
-        alert("Please confirm your email to access this page.");
-        await supabase.auth.signOut(); // Logout unconfirmed user
-        window.location.href = "login.html";
+// =================== PASSWORD RESET FUNCTION ===================
+document.getElementById("reset-password")?.addEventListener("click", async () => {
+    const email = document.getElementById("reset-email").value.trim();
+    const messageBox = document.getElementById("reset-message");
+
+    if (!email) {
+        messageBox.textContent = "❌ Please enter your email.";
+        messageBox.style.color = "red";
+        messageBox.style.display = "block";
+        return;
     }
-}
 
-checkUserStatus();
+    try {
+        const { error } = await supabase.auth.resetPasswordForEmail(email);
+        if (error) throw new Error(error.message);
+
+        messageBox.textContent = "✅ A password reset link has been sent to your email. Please check your inbox.";
+        messageBox.style.color = "green";
+        messageBox.style.display = "block";
+    } catch (error) {
+        messageBox.textContent = `❌ Error: ${error.message}`;
+        messageBox.style.color = "red";
+        messageBox.style.display = "block";
+    }
+});

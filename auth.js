@@ -96,7 +96,9 @@ document.getElementById("login-form")?.addEventListener("submit", async (e) => {
 document.getElementById("reset-password")?.addEventListener("click", async () => {
     const email = document.getElementById("reset-email").value.trim();
     const messageBox = document.getElementById("reset-message");
+    const emailInput = document.getElementById("reset-email");
 
+    // Check if email is empty
     if (!email) {
         messageBox.textContent = "❌ Please enter your email.";
         messageBox.style.color = "red";
@@ -105,16 +107,23 @@ document.getElementById("reset-password")?.addEventListener("click", async () =>
     }
 
     try {
-        // ✅ Send password reset email (email confirmation is required)
+        // Send password reset email (email confirmation is required)
         const { error } = await supabase.auth.resetPasswordForEmail(email);
-        if (error) throw new Error(error.message);
+        
+        if (error) {
+            throw new Error(error.message);
+        }
 
+        // On success, provide feedback and hide the email input field
+        emailInput.style.display = "none";  // Hide email input
         messageBox.textContent = "✅ A password reset link has been sent to your email. Please check your inbox.";
         messageBox.style.color = "green";
         messageBox.style.display = "block";
     } catch (error) {
+        // If error occurs, show an error message
         messageBox.textContent = `❌ Error: ${error.message}`;
         messageBox.style.color = "red";
         messageBox.style.display = "block";
     }
 });
+

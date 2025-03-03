@@ -5,18 +5,18 @@ serve(async (req) => {
   const { to, subject, html } = await req.json();
 
   const transporter = nodemailer.createTransport({
-    host: "email-smtp.us-east-1.amazonaws.com", // Change to your AWS SES region
+    host: "email-smtp.us-east-1.amazonaws.com",
     port: 587,
     secure: false, 
     auth: {
-      user: "", // Replace with your SES SMTP username
-      pass: "YOUR_SMTP_PASSWORD", // Replace with your SES SMTP password
+      user: "AKIAUZPNLA2CF27BC4MU", 
+      pass: "BJlRC2DqAopoq983FIW72UMR+aW4C8LzL4AX2QyyV+C5", 
     },
   });
 
   try {
     await transporter.sendMail({
-      from: "noreply@fleduacademy.com", // Use your verified domain or email
+      from: "noreply@fleduacademy.com",
       to,
       subject,
       html,

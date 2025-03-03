@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - FL EduAcademy</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS -->
-    <link rel="icon" href="logo.png" type="image/png">
-
+    <meta name="description" content="FL Eduportal - Access exams and learning materials">
+   <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">
+   <meta name="author" content="Fils Lambert IRATURINZE">
+   <link rel="stylesheet" href="style.css">
+   <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
     <!-- Supabase Client -->
    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script type="module" src="auth.js"></script>
@@ -23,7 +28,6 @@
             <ul id="nav-links">
                 <li class="nav-home"><a href="index.html">Home</a></li>
                 <li class="nav-login"><a href="login.html">Log In</a></li>
-                <li class="nav-signup"><a href="signup.html">Sign Up</a></li>
                 <li><a href="privacy.html">Privacy Policy</a></li>
                 <li><a href="terms.html">Terms and Conditions</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -38,6 +42,7 @@
     <section class="form-section">
         <div class="form-container">
             <h2>Sign Up for FL EduAcademy</h2>
+            <p id="signup-message"></p>
             <form id="signup-form">
                 <div class="form-group">
                     <input type="text" id="first-name" name="firstName" placeholder="First Name" required>

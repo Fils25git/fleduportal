@@ -1,0 +1,16 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for password reset",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "aws-sdk": "^2.100.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "14.x"
+  },
+  "author": "",
+  "license": "ISC"
+}

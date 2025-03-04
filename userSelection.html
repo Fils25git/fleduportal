@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">
-    <title>FL User Selection</title>
+    <title>FL Resources Selection</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <script>
@@ -37,14 +37,36 @@
     </script>
 </head>
 <body>
+     <header>
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+
+        <!-- Navigation Menu -->
+        <nav>
+            <ul id="nav-links">
+                <li class="nav-home"><a href="userSelection.html">Home</a></li>
+                <li> <a href="preprimary.html">Preprimary</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li> <a href="ordinary-level.html">Ordinary Level</a></li>
+                <li><a href="advanced-level.html">Advanced Level</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms and Conditions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                 <li class="nav-login"><a href="login.html">Log Out</a></li>
+            </ul>
+        </nav>
+        <a href="userSelection.html">
+            <img src="logo.png" alt="FL EduAcademy Logo" class="logo">
+        </a>
+    </header>
     <header>
         <a href="index.html">
             <img src="logo.png" alt="FL EduAcademy Logo" style="height: 50px;">
         </a><br>
         <nav>
             <a href="index.html">Home</a>
-            <a href="preprimary.html">Preprimary</a>
-            <a href="primary.html">Primary</a>
+           
+            
             <a href="ordinary-level.html">Ordinary Level</a>
             <a href="advanced-level.html">Advanced Level</a>
         </nav>
@@ -65,8 +87,21 @@
 
     <footer>
         <p>Phone/WhatsApp: +250798652481</p>
-        <p>Email: fleduportal25@gmail.com</p>
+        <p>Email: support@fleduacademy.com</p>
         <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
     </footer>
+     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hamburger menu toggle
+            const menuButton = document.querySelector(".hamburger-menu");
+            const menu = document.getElementById("nav-links");
+
+            if (menuButton && menu) {
+                menuButton.addEventListener("click", function () {
+                    menu.classList.toggle("show");
+                });
+            }
+        });
+    </script>
 </body>
 </html>

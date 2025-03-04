@@ -3,8 +3,8 @@ const crypto = require("crypto");
 
 // Configure AWS SES
 AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,  // Store in Netlify environment variables
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,  // Store in Netlify environment variables
+  accessKeyId: process.env.NETLIFY_AWS_ACCESS_KEY_ID,  // Store in Netlify environment variables
+  secretAccessKey: process.env.NETLIFY_AWS_SECRET_ACCESS_KEY,  // Store in Netlify environment variables
   region: "us-east-1"  // AWS SES region
 });
 

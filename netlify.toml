@@ -1,0 +1,7 @@
+[build]
+  functions = "netlify/functions"  # Path where serverless functions are stored
+
+[[redirects]]
+  from = "/reset-password"
+  to = "/reset-password.html"
+  status = 200

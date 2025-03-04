@@ -6,6 +6,10 @@
     <meta name="description" content="Access preprimary level educational resources including activities, guides, and fun learning materials on FL EduAcademy. View or download materials easily.">
     <meta name="keywords" content="Preprimary education, learning resources, FL EduAcademy, activities, fun learning, download, view online">
     <meta name="author" content="FL EduAcademy">
+    <meta name="description" content="FL Eduportal - Access exams and learning materials">
+    <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">
+    <meta name="author" content="Fils Lambert IRATURINZE">
+<link rel="icon" type="image/png"  href="logo.png">
     <title>Preprimary Resources - FL EduAcademy</title>
     <link rel="stylesheet" href="style.css">
     <style>
@@ -44,17 +48,27 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">
-            <img src="logo.png" alt="FL EduAcademy Logo" style="height: 50px;">
-        </a>
+      <header>
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+
+        <!-- Navigation Menu -->
         <nav>
-            <a href="index.html">Home</a>
-            <a href="preprimary.html">Preprimary</a>
-            <a href="primary.html">Primary</a>
-            <a href="ordinary-level.html">Ordinary Level</a>
-            <a href="advanced-level.html">Advanced Level</a>
+            <ul id="nav-links">
+                <li class="nav-home"><a href="userSelection.html">Home</a></li>
+                <li> <a href="preprimary.html">Preprimary</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li> <a href="ordinary-level.html">Ordinary Level</a></li>
+                <li><a href="advanced-level.html">Advanced Level</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms and Conditions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                 <li class="nav-login"><a href="login.html">Log Out</a></li>
+            </ul>
         </nav>
+        <a href="userSelection.html">
+            <img src="logo.png" alt="FL EduAcademy Logo" class="logo">
+        </a>
     </header>
 
     <section class="hero">
@@ -126,6 +140,19 @@
                 }
             });
         }
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hamburger menu toggle
+            const menuButton = document.querySelector(".hamburger-menu");
+            const menu = document.getElementById("nav-links");
+
+            if (menuButton && menu) {
+                menuButton.addEventListener("click", function () {
+                    menu.classList.toggle("show");
+                });
+            }
+        });
     </script>
 </body>
 </html>

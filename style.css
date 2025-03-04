@@ -9,6 +9,10 @@ body {
     color: #333;
     background-color: #f9f9f9;
 }
+.hidden {
+    display: none;
+}
+
 header {
     display: flex;
     align-items: center;

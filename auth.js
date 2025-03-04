@@ -83,7 +83,7 @@ document.getElementById("login-form")?.addEventListener("submit", async (e) => {
         }
 
         // ✅ Redirect to dashboard or home page on successful login
-        window.location.href = "dashboard.html";
+        window.location.href = "userSelection.html";
 
     } catch (error) {
         messageBox.textContent = `❌ Error: ${error.message}`;

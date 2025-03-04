@@ -10,19 +10,10 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
     const lastName = document.getElementById("last-name").value.trim();
     const email = document.getElementById("signup-email").value.trim();
     const password = document.getElementById("signup-password").value;
-    const confirmPassword = document.getElementById("confirm-password").value;
     const messageBox = document.getElementById("signup-message");
 
     // Get label elements
     const labels = document.querySelectorAll("#signup-form label");
-
-    // Check if passwords match
-    if (password !== confirmPassword) {
-        messageBox.textContent = "❌ Passwords do not match!";
-        messageBox.style.color = "red";
-        messageBox.style.display = "block";
-        return;
-    }
 
     try {
         // Hide all labels when the user has filled the form
@@ -54,7 +45,7 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
         ]);
 
         // ✅ Show success message and hide input fields
-        messageBox.textContent = "✅ Account successfully created! Redirecting...";
+        messageBox.textContent = "✅ Account successfully created! Redirecting to log in page...";
         messageBox.style.color = "green";
         messageBox.style.display = "block";
 
@@ -70,6 +61,7 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
         messageBox.style.display = "block";
     }
 });
+
 // =================== LOGIN FUNCTION ===================
 document.getElementById("login-form")?.addEventListener("submit", async (e) => {
     e.preventDefault();

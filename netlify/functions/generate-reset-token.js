@@ -25,7 +25,7 @@ exports.handler = async function (event, context) {
 
   // Create the email parameters
   const params = {
-    Source: "noreply@fleduacademy.com", //verified email in SES
+    Source: "fleduportal25@gmail.com", //verified email in SES
     Destination: {
       ToAddresses: [email],
     },

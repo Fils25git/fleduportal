@@ -1,8 +1,7 @@
 const supabase = window.supabase.createClient(
     "https://uppmptshwlagdyswdvko.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcG1wdHNod2xhZ2R5c3dkdmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4MjA3ODMsImV4cCI6MjA1NjM5Njc4M30.rkXVCQoIun-Pff8APEbP98Cm0FvFt_BKRL81UkXl0IE" //Supabase API key
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcG1wdHNod2xhZ2R5c3dkdmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwOTczMDcsImV4cCI6MjA1NjY3MzMwN30.BIN-9LCcP3gG8fDv9vYgsvnZOK6k6GLMeqHOaIs7bjQ"
 );
-
 // =================== SIGN-UP FUNCTION ===================
 document.getElementById("signup-form")?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -14,6 +13,10 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
     const confirmPassword = document.getElementById("confirm-password").value;
     const messageBox = document.getElementById("signup-message");
 
+    // Get label elements
+    const labels = document.querySelectorAll("#signup-form label");
+
+    // Check if passwords match
     if (password !== confirmPassword) {
         messageBox.textContent = "❌ Passwords do not match!";
         messageBox.style.color = "red";
@@ -22,6 +25,9 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
     }
 
     try {
+        // Hide all labels when the user has filled the form
+        labels.forEach(label => label.style.display = "none");
+
         // ✅ Check if email is already registered
         const { data: existingUsers, error: checkError } = await supabase
             .from("users")
@@ -47,8 +53,16 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
             { id: data.user.id, first_name: firstName, last_name: lastName, email }
         ]);
 
-        // ✅ Redirect to login page after successful registration
-        window.location.href = "login.html";
+        // ✅ Show success message and hide input fields
+        messageBox.textContent = "✅ Account successfully created! Redirecting...";
+        messageBox.style.color = "green";
+        messageBox.style.display = "block";
+
+        document.getElementById("signup-form").reset(); // Clear form
+
+        setTimeout(() => {
+            window.location.href = "login.html"; // Redirect after success
+        }, 2000);
 
     } catch (error) {
         messageBox.textContent = `❌ Error: ${error.message}`;
@@ -56,7 +70,6 @@ document.getElementById("signup-form")?.addEventListener("submit", async (e) => 
         messageBox.style.display = "block";
     }
 });
-
 // =================== LOGIN FUNCTION ===================
 document.getElementById("login-form")?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -64,6 +77,7 @@ document.getElementById("login-form")?.addEventListener("submit", async (e) => {
     const email = document.getElementById("login-email").value.trim();
     const password = document.getElementById("login-password").value;
     const messageBox = document.getElementById("login-message");
+    const labels = document.querySelectorAll("#login-form label"); // Get label elements
 
     if (!email || !password) {
         messageBox.textContent = "❌ Please fill in both email and password.";
@@ -73,6 +87,9 @@ document.getElementById("login-form")?.addEventListener("submit", async (e) => {
     }
 
     try {
+        // Hide labels when user submits
+        labels.forEach(label => label.style.display = "none");
+
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
         if (error) {
@@ -82,8 +99,15 @@ document.getElementById("login-form")?.addEventListener("submit", async (e) => {
             return;
         }
 
-        // ✅ Redirect to dashboard or home page on successful login
-        window.location.href = "userSelection.html";
+        // ✅ Show success message and clear form
+        messageBox.textContent = "✅ Login successful! Redirecting...";
+        messageBox.style.color = "green";
+        messageBox.style.display = "block";
+        document.getElementById("login-form").reset(); // Clear form
+
+        setTimeout(() => {
+            window.location.href = "userSelection.html"; // Redirect after success
+        }, 2000);
 
     } catch (error) {
         messageBox.textContent = `❌ Error: ${error.message}`;
@@ -91,12 +115,11 @@ document.getElementById("login-form")?.addEventListener("submit", async (e) => {
         messageBox.style.display = "block";
     }
 });
-
 // =================== PASSWORD RESET FUNCTION ===================
 document.getElementById("reset-password")?.addEventListener("click", async () => {
     const email = document.getElementById("reset-email").value.trim();
     const messageBox = document.getElementById("reset-message");
-    const emailLabel = document.getElementById("reset-email-label");
+    const labels = document.querySelectorAll("#reset-form label"); // Get label elements
 
     if (!email) {
         messageBox.textContent = "❌ Please enter your email.";
@@ -106,18 +129,19 @@ document.getElementById("reset-password")?.addEventListener("click", async () =>
     }
 
     try {
-        // ✅ Send password reset email (email confirmation is required)
+        // Hide labels after entering email
+        labels.forEach(label => label.style.display = "none");
+
+        // ✅ Send password reset email
         const { error } = await supabase.auth.resetPasswordForEmail(email);
 
         if (error) throw new Error(error.message);
 
-        // Hide the email input and label, and show success message
-        emailLabel.style.display = "none";
-        document.getElementById("reset-email").style.display = "none";
-        
-        messageBox.textContent = "✅ A password reset link has been sent to your email. Please check your inbox.";
+        // ✅ Show success message and hide email input
+        messageBox.textContent = "✅ Password reset link sent! Check your inbox.";
         messageBox.style.color = "green";
         messageBox.style.display = "block";
+        document.getElementById("reset-email").style.display = "none";
 
     } catch (error) {
         messageBox.textContent = `❌ Error: ${error.message}`;

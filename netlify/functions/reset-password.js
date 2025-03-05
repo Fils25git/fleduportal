@@ -17,9 +17,10 @@ exports.handler = async function(event, context) {
   
   // Initialize Supabase client with environment variables
   const supabase = createClient(
-    process.env.SUPABASE_URL,  // Supabase URL
-    process.env.SUPABASE_SERVICE_ROLE_KEY  // Supabase service role key
-  );
+  "https://uppmptshwlagdyswdvko.supabase.co",  //actual Supabase URL
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcG1wdHNod2xhZ2R5c3dkdmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwOTczMDcsImV4cCI6MjA1NjY3MzMwN30.BIN-9LCcP3gG8fDv9vYgsvnZOK6k6GLMeqHOaIs7bjQ"  // Replace with your actual Supabase service role key
+);
+
 
   try {
     // Simulate password reset: Update the password where reset_token matches

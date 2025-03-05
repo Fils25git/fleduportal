@@ -38,6 +38,7 @@ header {
 
 .logo {
     height: 50px;
+    margin-left:10px;
 }
 
 nav {
@@ -73,13 +74,14 @@ nav a:hover {
     nav ul {
         display: none;
         flex-direction: column;
-        background: #4CAF50;
+        background:none;
         position: absolute;
         top: 70px;
         left: 0;
+        right:auto;
         width: 100%;
         padding: 10px 0;
-        text-align: center;
+        text-align: right;
     }
 
     nav ul.show {

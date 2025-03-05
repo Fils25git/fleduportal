@@ -18,6 +18,7 @@ export const handler = async (event) => {
 
     // Generate reset token
     const resetToken = crypto.randomBytes(20).toString("hex");
+  const resetLink = `https://fleduacademy.com/reset-password.html?token=${resetToken}&email=${encodeURIComponent(email)}`;
 
     const params = {
       Source: process.env.SES_FROM_EMAIL, // Verified email in AWS SES
@@ -30,9 +31,9 @@ export const handler = async (event) => {
 
     await ses.send(new SendEmailCommand(params));
 
-    return { statusCode: 200, body: JSON.stringify({ message: "Password reset email sent successfully." }) };
+    return { statusCode: 200, body: JSON.stringify({ message: "Password reset email sent successfully please check inbox." }) };
   } catch (error) {
     console.error("Error:", error);
-    return { statusCode: 500, body: JSON.stringify({ error: "Failed to send email." }) };
+    return { statusCode: 500, body: JSON.stringify({ error: "Failed to send email double check your email." }) };
   }
 };

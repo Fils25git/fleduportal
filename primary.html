@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FL Eduportal - Access exams and learning materials">
+    <meta name="description" content="FL EduAcademy - Access exams and learning materials">
     <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">
     <meta name="author" content="Fils Lambert IRATURINZE">
-    <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-    <title>FL EduAc_primary page</title>
+   <link rel="icon" type="image/png"  href="logo.png">
+    <title>FL primary Resources</title>
     <link rel="stylesheet" href="style.css">
 </head>
     <style>
@@ -49,20 +45,29 @@
         }
     </style>
 </head>
-<body>
-    <header>
-        <a href="index.html">
-            <img src="logo.png" alt="FL EduAcademy Logo" style="height: 50px;">
-        </a>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="preprimary.html">Preprimary</a>
-            <a href="primary.html">Primary</a>
-            <a href="ordinary-level.html">Ordinary Level</a>
-            <a href="advanced-level.html">Advanced Level</a>
-        </nav>
-    </header>
+<header>
+    <!-- Hamburger Menu Icon -->
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
 
+        <!-- Navigation Menu -->
+        <nav>
+            <ul id="nav-links">
+                <li class="nav-home"><a href="userSelection.html">Home</a></li>
+                <li> <a href="preprimary.html">Preprimary</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li> <a href="ordinary-level.html">Ordinary Level</a></li>
+                <li><a href="advanced-level.html">Advanced Level</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms and Conditions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                 <li class="nav-login"><a href="index.html">Log Out</a></li>
+            </ul>
+        </nav>
+        <a href="userSelection.html">
+            <img src="logo.png" alt="FL EduAcademy Logo" class="logo">
+        </a>
+    </header>
+<body>
     <section class="hero">
         <h1>Primary Level Resources</h1>
         <p>Browse and access primary level educational materials. You can view them online or download them for later.</p>
@@ -592,7 +597,7 @@
         <div class="resource-item" data-title="SCIENCE AND ELEMENTARY TECHNOLOGY REVISION QUESTIONS">
                 <div>
                 <h3> SCIENCE AND ELEMENTARY TECHNOLOGY REVISION</h3>
-                <p> SCIENCE AND ELEMENTARY TECHNOLOGY REVISION QUESTIONS.</p>
+                <p> work book that can help you in  SCIENCE AND ELEMENTARY TECHNOLOGY REVISION QUESTIONS.</p>
             </div>
             <div class="resource-buttons">
                 <a href="https://drive.google.com/file/d/1KXs8NMkysVBS6f5wZheaFDUpTLHtyq8U/view?usp=drivesdk" target="_blank"><button>View Online</button></a>
@@ -605,9 +610,23 @@
         <p>Email: fleduportal25@gmail.com</p>
         <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
         <nav>
+            <a href="privacy.html"> Privacy Policy</a>
             <a href="1.html">About Us</a>
         </nav>
     </footer>
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hamburger menu toggle
+            const menuButton = document.querySelector(".hamburger-menu");
+            const menu = document.getElementById("nav-links");
+
+            if (menuButton && menu) {
+                menuButton.addEventListener("click", function () {
+                    menu.classList.toggle("show");
+                });
+            }
+        });
+    </script>
 
     <script>
         function searchResources() {

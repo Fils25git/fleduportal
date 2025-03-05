@@ -10,7 +10,7 @@ export const handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify({ error: "Email is required" }) };
     }
 
-    // Generate a reset token
+    // Generate reset token
     const resetToken = crypto.randomBytes(20).toString("hex");
 
     const params = {
@@ -26,7 +26,7 @@ export const handler = async (event) => {
 
     return { statusCode: 200, body: JSON.stringify({ message: "Password reset email sent successfully." }) };
   } catch (error) {
-    console.error("Error sending email:", error);
-    return { statusCode: 500, body: JSON.stringify({ error: "Failed to send reset email." }) };
+    console.error("Error:", error);
+    return { statusCode: 500, body: JSON.stringify({ error: "Failed to send email." }) };
   }
 };

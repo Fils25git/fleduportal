@@ -1,4 +1,5 @@
-const AWS = require("aws-sdk");
+const AWS = window.AWS;  // ✅ Use AWS SDK from CDN
+
 const crypto = require("crypto");
 
 // Configure AWS SES

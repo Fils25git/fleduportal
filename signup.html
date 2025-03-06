@@ -71,8 +71,7 @@
                 <button type="submit" class="btn">Sign Up</button>
             </form>
             <p>Already have an account? <a href="login.html">Log In here</a></p>
-
-        </div>
+    </div>
     </section>
 
     <!-- Footer -->
@@ -93,36 +92,6 @@
                 });
             }
         });
-       /* async function signUp() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const role = document.getElementById("role").value; // Get selected role
-
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-  });
-
-  if (error) {
-    alert("Signup failed: " + error.message);
-    return;
-  }
-
-  // Insert role into user_roles table
-  const user = data.user;
-  if (user) {
-    const { error: roleError } = await supabase
-      .from("user_roles")
-      .insert([{ user_id: user.id, role: role }]);
-
-    if (roleError) {
-      alert("Failed to set role: " + roleError.message);
-    } else {
-      alert("Signup successful!");
-    }
-  }
-}*/
-
     </script>
 </body>
 </html>

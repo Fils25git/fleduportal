@@ -141,6 +141,37 @@ document.getElementById("reset-password")?.addEventListener("click", async () =>
         messageBox.style.display = "block";
     }
 });
+async function signUp() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const role = document.getElementById("role").value; // Get selected role
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) {
+    alert("Signup failed: " + error.message);
+    return;
+  }
+
+  const user = data.user;
+
+  if (user) {
+    // Insert the role into the user_roles table
+    const { error: roleError } = await supabase
+      .from("user_roles")
+      .insert([{ user_id: user.id, role: role }]);
+
+    if (roleError) {
+      alert("Failed to set role: " + roleError.message);
+    } else {
+      alert("Signup successful!");
+    }
+  }
+}
+
 const selectedRole = document.getElementById("role").value;
 const role = selectedRole === "teacher" ? "pending_teacher" : "learner";
 

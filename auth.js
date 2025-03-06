@@ -141,3 +141,7 @@ document.getElementById("reset-password")?.addEventListener("click", async () =>
         messageBox.style.display = "block";
     }
 });
+const selectedRole = document.getElementById("role").value;
+const role = selectedRole === "teacher" ? "pending_teacher" : "learner";
+
+await supabase.from("user_roles").insert([{ user_id: user.id, role: role }]);

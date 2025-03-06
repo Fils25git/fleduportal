@@ -60,6 +60,13 @@
                     <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
+                    <label for="role">Select Your Role:</label>
+                 <select id="role">
+                   <option value="learner">Learner</option>
+                   <option value="teacher">Teacher</option>
+                </select>
+                </div>
+                <div class="form-group">
                     <input type="password" id="signup-password" name="password" placeholder="Enter your password" required>
                 </div>
                 <div class="form-group">
@@ -92,6 +99,36 @@
                 });
             }
         });
+        async function signUp() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const role = document.getElementById("role").value; // Get selected role
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) {
+    alert("Signup failed: " + error.message);
+    return;
+  }
+
+  // Insert role into user_roles table
+  const user = data.user;
+  if (user) {
+    const { error: roleError } = await supabase
+      .from("user_roles")
+      .insert([{ user_id: user.id, role: role }]);
+
+    if (roleError) {
+      alert("Failed to set role: " + roleError.message);
+    } else {
+      alert("Signup successful!");
+    }
+  }
+}
+
     </script>
 </body>
 </html>

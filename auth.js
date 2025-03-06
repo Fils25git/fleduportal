@@ -141,7 +141,7 @@ document.getElementById("reset-password")?.addEventListener("click", async () =>
         messageBox.style.display = "block";
     }
 });
-async function signUp() {
+/*async function signUp() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const role = document.getElementById("role").value; // Get selected role
@@ -198,4 +198,4 @@ async function redirectToDashboard() {
   } else if (role === "learner") {
     window.location.href = "learner-dashboard.html";
   }
-}
+}*/ 

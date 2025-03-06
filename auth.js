@@ -1,6 +1,6 @@
 const supabase = window.supabase.createClient(
     "https://uppmptshwlagdyswdvko.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcG1wdHNod2xhZ2R5c3dkdmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwOTczMDcsImV4cCI6MjA1NjY3MzMwN30.BIN-9LCcP3gG8fDv9vYgsvnZOK6k6GLMeqHOaIs7bjQ"
+    "iraturinzefilslambert12002800473130470786728623fleduacademy"
 );
 // =================== SIGN-UP FUNCTION ===================
 document.getElementById("signup-form")?.addEventListener("submit", async (e) => {

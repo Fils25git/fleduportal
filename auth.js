@@ -145,3 +145,26 @@ const selectedRole = document.getElementById("role").value;
 const role = selectedRole === "teacher" ? "pending_teacher" : "learner";
 
 await supabase.from("user_roles").insert([{ user_id: user.id, role: role }]);
+// After user logs in
+const user = supabase.auth.user();
+
+// Redirect based on role
+async function redirectToDashboard() {
+  const { data, error } = await supabase
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", user.id)
+    .single();
+
+  if (error) {
+    console.error("Error fetching role:", error);
+    return;
+  }
+
+  const role = data.role;
+  if (role === "teacher") {
+    window.location.href = "teacher-dashboard.html";
+  } else if (role === "learner") {
+    window.location.href = "learner-dashboard.html";
+  }
+}

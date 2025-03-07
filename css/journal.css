@@ -1,1 +1,33 @@
+/* Comments Section */
+.comments-section {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+}
 
+.comments-section h4 {
+    margin-bottom: 5px;
+}
+
+.name-input,
+.comment-input {
+    width: calc(100% - 80px);
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.comment-btn {
+    padding: 5px 10px;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.comments-list p {
+    background: white;
+    padding: 5px;
+    margin: 5px 0;
+    border-left: 3px solid green;
+}

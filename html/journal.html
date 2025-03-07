@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal | FL EduAcademy</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/journal.js" defer></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <img src="logo.png" alt="FL EduAcademy Logo" class="logo">
+    </header>
+
+    <!-- Sidebar (Hamburger Menu) -->
+    <nav id="sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="journal.html" class="active">Journal</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="journal-container">
+            <h1>Educational Updates</h1>
+
+            <!-- Journal Posts -->
+            <div id="journalPosts">
+                <div class="journal-post">
+                    <h2>Welcome to FL EduAcademy Journal</h2>
+                    <p>This is where I will share educational updates, resources, and important information.</p>
+                    <small>Posted on March 7, 2025</small>
+
+                    <!-- Comments Section -->
+                    <div class="comments-section">
+                        <h4>Comments</h4>
+                        <div class="comments-list"></div>
+                        <input type="text" class="name-input" placeholder="Enter your name" />
+                        <input type="text" class="comment-input" placeholder="Write a comment..." />
+                        <button class="comment-btn">Comment</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 FL EduAcademy | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
+    </footer>
+
+</body>
+  </html>

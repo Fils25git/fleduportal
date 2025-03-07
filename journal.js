@@ -1,8 +1,35 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const journalPosts = document.getElementById("journalPosts");
+    const commentsList = document.getElementById("commentsList");
 
-    // Add event listeners to comment buttons
-    journalPosts.addEventListener("click", function (e) {
+    // Function to load comments
+    async function loadComments() {
+        let { data: comments, error } = await supabase
+            .from("comments")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+        if (error) {
+            console.error("Error fetching comments:", error);
+            return;
+        }
+
+        // Clear previous comments
+        commentsList.innerHTML = "";
+
+        // Add fetched comments to the page
+        comments.forEach(comment => {
+            const commentElement = document.createElement("p");
+            commentElement.innerHTML = `<strong>${comment.name}:</strong> ${comment.comment}`;
+            commentsList.appendChild(commentElement);
+        });
+    }
+
+    // Load comments when the page loads
+    await loadComments();
+
+    // Handle comment submission
+    journalPosts.addEventListener("click", async function (e) {
         if (e.target.classList.contains("comment-btn")) {
             const commentInput = e.target.previousElementSibling;
             const nameInput = commentInput.previousElementSibling;
@@ -14,9 +41,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const commentElement = document.createElement("p");
-            commentElement.innerHTML = `<strong>${userName}:</strong> ${commentText}`;
-            e.target.parentElement.querySelector(".comments-list").appendChild(commentElement);
+            // Save comment to Supabase
+            let { data, error } = await supabase
+                .from("comments")
+                .insert([{ name: userName, comment: commentText }]);
+
+            if (error) {
+                console.error("Error saving comment:", error);
+                alert("Failed to save comment.");
+                return;
+            }
+
+            // Reload comments to show the new one
+            await loadComments();
 
             // Clear input fields
             nameInput.value = "";
@@ -24,11 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-// Toggle sidebar menu
-function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("open");
-    }
 // Supabase Configuration
 const SUPABASE_URL = "https://uppmptshwlagdyswdvko.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwcG1wdHNod2xhZ2R5c3dkdmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEyNDg5NjgsImV4cCI6MjA1NjgyNDk2OH0.GLhtyFMRRHYMd6M39bOPQ2GnYdvSd7nPohzkYA151-4";

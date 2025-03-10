@@ -21,6 +21,8 @@ body {
     font-weight: bold;
     border-radius: 5px;
     animation: shake 0.5s infinite alternate;
+    position:fixed;
+    text-align:center;
 }
 
 @keyframes shake {

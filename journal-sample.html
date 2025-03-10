@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-2007098232067908">
     <title>Journal | FL EduAcademy</title>
-    <link rel="stylesheet" href="journal.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/journal.css">
+    <link rel="stylesheet" href="/style.css">
     <script src="journal.js" defer></script>
    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <!-- Google tag (gtag.js) -->
@@ -24,18 +24,27 @@
 
     <!-- Header -->
     <header>
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+
+        <!-- Navigation Menu -->
+        <nav>
+            <ul id="nav-links">
+                <li class="nav-home"><a href="/userSelection.html">Home</a></li>
+                <li><a href="journal.html" class="active">Journal</a></li>
+                <li> <a href="preprimary.html">Preprimary</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li> <a href="ordinary-level.html">Ordinary Level</a></li>
+                <li><a href="advanced-level.html">Advanced Level</a></li>
+                <li><a href="/privacy.html">Privacy Policy</a></li>
+                <li><a href="/terms.html">Terms and Conditions</a></li>
+                <li><a href="/about.html">About Us</a></li>
+                 <li class="nav-login"><a href="/index.html">Log Out</a></li>
+            </ul>
+        </nav>
         <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
         <img src="logo.png" alt="FL EduAcademy Logo" class="logo">
     </header>
-
-    <!-- Sidebar (Hamburger Menu) -->
-    <nav id="sidebar">
-        <ul>
-            <li><a href="userSelection.html">Resources</a></li>
-            <li><a href="journal.html" class="active">Journal</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
     </nav>
 
     <!-- Main Content -->
@@ -75,6 +84,19 @@
     <footer>
         <p>&copy; 2025 FL EduAcademy | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hamburger menu toggle
+            const menuButton = document.querySelector(".hamburger-menu");
+            const menu = document.getElementById("nav-links");
+
+            if (menuButton && menu) {
+                menuButton.addEventListener("click", function () {
+                    menu.classList.toggle("show");
+                });
+            }
+        });
+    </script>
 
 </body>
   </html>

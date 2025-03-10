@@ -22,18 +22,26 @@
 
     <!-- Header -->
     <header>
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+
+        <!-- Navigation Menu -->
+        <nav>
+            <ul id="nav-links">
+                <li class="nav-home"><a href="userSelection.html">Home</a></li>
+                <li> <a href="preprimary.html">Preprimary</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li> <a href="ordinary-level.html">Ordinary Level</a></li>
+                <li><a href="advanced-level.html">Advanced Level</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms and Conditions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                 <li class="nav-login"><a href="index.html">Log Out</a></li>
+            </ul>
+        </nav>
         <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
         <img src="logo.png" alt="FL EduAcademy Logo" class="logo">
     </header>
-
-    <!-- Sidebar (Hamburger Menu) -->
-    <nav id="sidebar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="journal.html" class="active">Journal</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
     </nav>
 
     <!-- Main Content -->
@@ -46,7 +54,7 @@
                 <div class="journal-post">
                     <h2 style="text-align:center;"> Ikaze Kuri FL EduAcademy Journal</h2>
                     <h3 style="text-align:center"> Inkuru wasoma zigezweho</h3>
-                    <p><a href="/html/journal/itangazo-rya-NESA-ku-barmu-bose-bigisha-amasomo-y'indimi.html">Ikigo cy'igihugu gishinzwe ibizamini n'ubugenzuzi bw'amashuri NESA,
+                    <p>< a href="ni-iki-abagenzuzi-kuri-gahunda-nzamurabushobozi-(weekend-remedial-program)-barimo-kureba.html">Ubugenzuzi kuri gahunda ya Weekend remedial program</a></p>                    <p><a href="/html/journal/itangazo-rya-NESA-ku-barmu-bose-bigisha-amasomo-y'indimi.html">Ikigo cy'igihugu gishinzwe ibizamini n'ubugenzuzi bw'amashuri NESA,
            cyatangaje ko cyateguye igikorwa cy'ubugenzuzi ku myigishirize y'indimi</a></p>
                     <p><a href="Bizagenda-bite-igihe-abanyeshuri-biga-mu-mwaka-wa-6 n'uwagatatu-mu-mashuri-yisumbuye-bazaba-batabashize-gutsinda-nkuko-Minisiteri-y'uburezi-ibisaba?.html">
                         Bizagenda bite igihe amanota 50% Iteka rishya rya minisiteri y'uburezi
@@ -78,6 +86,19 @@
     <footer>
         <p>&copy; 2025 FL EduAcademy | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hamburger menu toggle
+            const menuButton = document.querySelector(".hamburger-menu");
+            const menu = document.getElementById("nav-links");
+
+            if (menuButton && menu) {
+                menuButton.addEventListener("click", function () {
+                    menu.classList.toggle("show");
+                });
+            }
+        });
+    </script>
 
 </body>
   </html>

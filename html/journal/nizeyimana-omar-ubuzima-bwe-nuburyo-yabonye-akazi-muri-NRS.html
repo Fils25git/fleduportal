@@ -1,0 +1,158 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="google-adsense-account" content="ca-pub-2007098232067908">  
+    <meta name="description" content="Access preprimary level educational resources including activities, guides, and fun learning materials on FL EduAcademy. View or download materials easily.">  
+    <meta name="keywords" content="Preprimary education, learning resources, FL EduAcademy, activities, fun learning, download, view online">  
+    <meta name="author" content="FL EduAcademy">  
+    <meta name="description" content="FL EduAcademy- Access exams and learning materials">  
+    <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">  
+    <meta name="author" content="Fils Lambert IRATURINZE">  
+    <link rel="icon" type="image/png" href="/logo.png">  
+    <title>Journal | FL EduAcademy</title>  
+    <link rel="stylesheet" href="/journal.css">  
+    <link rel="stylesheet" href="/style.css">  
+    <script src="journal.js" defer></script>  
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>  
+    <!-- Google tag (gtag.js) -->  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W72DSTS70X"></script>  
+</head>  
+<script>  
+  window.dataLayer = window.dataLayer || [];  
+  function gtag(){dataLayer.push(arguments);}  
+  gtag('js', new Date());  
+  gtag('config', 'G-W72DSTS70X');  
+</script>  
+
+<body>  
+<header>  
+    <div class="hamburger-menu" onclick="toggleMenu()">☰</div>  
+    <nav>  
+        <ul id="nav-links">  
+            <li class="nav-home"><a href="/userSelection.html">Home</a></li>  
+            <li><a href="/journal.html" class="active">Journal</a></li>  
+            <li><a href="/preprimary.html">Preprimary</a></li>  
+            <li><a href="/primary.html">Primary</a></li>  
+            <li><a href="/ordinary-level.html">Ordinary Level</a></li>  
+            <li><a href="/advanced-level.html">Advanced Level</a></li>  
+            <li><a href="/privacy.html">Privacy Policy</a></li>  
+            <li><a href="/terms.html">Terms and Conditions</a></li>  
+            <li><a href="/about.html">About Us</a></li>  
+            <li class="nav-login"><a href="/index.html">Log Out</a></li>  
+        </ul>  
+    </nav>    
+    <img src="/logo.png" alt="FL EduAcademy Logo" class="logo">  
+</header>  
+
+<main>  
+    <section class="journal-container">  
+        <h2>Inkuru ya Nizeyimana Omar: Uko Igororamuco ryamubereye inzira y'ubuzima bushya</h2>  
+        <small>Yashyizweho tariki ya 8 Werurwe 2025</small><br>  
+        <small>Yanditswe na <strong>Fils Lambert IRATURINZE</strong></small>  
+
+        <div id="journalPosts">  
+            <div class="journal-post">  
+                <p>Nizeyimana Omar yarakuze ari impfubyi, nta muryango agira. Ubuzima bwe bwari bugoye cyane, kuko atigeze agira amahirwe yo kubona uburere bw’umuryango cyangwa uburenganzira bwo kubona ibyangombwa by’ubwenegihugu nka bagenzi be. Mu 2022, yageze mu Kigo cya Iwawa cyakira urubyiruko rukeneye guhindurwa mu myitwarire. Nyuma yo kurangiza amasomo y’igororamuco, bagenzi be baratashye, ariko we nta we yari afite umwakira.</p><br>  
+
+                <p>Omar ntiyigeze acika intege. Yagaragaje imyitwarire myiza, ubwitange, n’ikinyabupfura, atangira kugira uruhare mu gufasha abandi barwayi b’Ikigo cya Iwawa. Yitwaraga neza mu mirimo itandukanye, agaragaza ubwitange butangaje. Ubuyobozi bw’ikigo bwatangiye kubona ko ari umusore ushoboye, ufite umutima wo gufasha n’ubushake bwo gukorera abandi.</p><br>  
+
+                <p>Kuwa 5 Werurwe 2025, Omar yabonye inkuru yamuhinduye ubuzima. Ubuyobozi bw’Ikigo cy’Igihugu Gishinzwe Igororamuco (NRS) bwamuhaye akazi ku mugaragaro. Yabaye umukozi wa NRS, ahembwa nk’abandi bakozi, ibintu byari inzozi kuri we. Ntibyagarukiye aho, kuko NRS yamwemereye kumufasha kubona ibyangombwa byose by’ubwenegihugu, ikamubera umuryango atigeze agira.</p><br>  
+
+                <p>Uyu munsi, Nizeyimana Omar ni urugero rwiza rw’uko umuntu ashobora guhinduka, agahindurirwa ubuzima n’amahirwe abayeho kubera imyitwarire myiza. Nubwo yakuze nta muryango, ubu afite ejo hazaza heza, aho akorera igihugu cye nk’umukozi wa NRS. Inkuru ye ni iy’ukwihangana, gukomera, no kugaragaza indangagaciro nziza.</p><br>  
+
+                <small>Yashyizweho tariki ya 8 Werurwe 2025</small><br>  
+                <small>Yanditswe na Fils Lambert IRATURINZE</small>  
+
+                !-- Igice cy'ibitekerezo -->
+        <div class="comments-section">
+            <h4>Ibitekerezo</h4>
+            <div class="comments-list"></div>
+            <input type="text" class="name-input" placeholder="Andika izina ryawe" />
+            <input type="text" class="comment-input" placeholder="Andika igitekerezo cyawe..." />
+            <button class="comment-btn">Tanga igitekerezo</button>
+        </div>
+              <h1><a href="/journal.html"><button>Soma Izindi nkuru</button></a></h1>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 FL EduAcademy</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    const { createClient } = supabase;
+    const supabaseUrl = "https://lrwqsjxvbyxfaxncxisg.supabase.co"; 
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxyd3Fzanh2Ynl4ZmF4bmN4aXNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE0ODI3NzQsImV4cCI6MjA1NzA1ODc3NH0.gpFO3mW2hKRYleTRn3UEU0IgdNsIDgLdttQBnflu2qc";
+    const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
+    const commentInput = document.querySelector(".comment-input");
+    const nameInput = document.querySelector(".name-input");
+    const commentBtn = document.querySelector(".comment-btn");
+    const commentsList = document.querySelector(".comments-list");
+
+    async function loadComments() {
+        commentsList.innerHTML = "";
+
+        // Load from Supabase
+        const { data, error } = await supabaseClient.from("comments").select("*");
+        if (error) {
+            console.error("Error loading comments:", error);
+            return;
+        }
+
+        data.forEach(comment => {
+            displayComment(comment.name, comment.text);
+        });
+
+        // Load from localStorage as a fallback
+        const localComments = JSON.parse(localStorage.getItem("comments")) || [];
+        localComments.forEach(comment => {
+            displayComment(comment.name, comment.text);
+        });
+    }
+
+    function displayComment(name, text) {
+        const commentElement = document.createElement("div");
+        commentElement.classList.add("comment-item");
+        commentElement.innerHTML = `<strong>${name}:</strong> ${text}`;
+        commentsList.appendChild(commentElement);
+    }
+
+    async function addComment() {
+        const name = nameInput.value.trim();
+        const text = commentInput.value.trim();
+
+        if (!name || !text) {
+            alert("Nyamuneka andika izina n'igitekerezo!");
+            return;
+        }
+
+        // Save to Supabase
+        const { error } = await supabaseClient.from("comments").insert([{ name, text }]);
+        if (error) {
+            console.error("Error saving comment to Supabase:", error);
+        }
+
+        // Save to localStorage
+        const comments = JSON.parse(localStorage.getItem("comments")) || [];
+        comments.push({ name, text });
+        localStorage.setItem("comments", JSON.stringify(comments));
+
+        // Clear inputs
+        nameInput.value = "";
+        commentInput.value = "";
+
+        // Reload comments
+        loadComments();
+    }
+
+    commentBtn.addEventListener("click", addComment);
+    await loadComments();
+});
+</script>
+
+</body>
+  </html>

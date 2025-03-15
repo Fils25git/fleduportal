@@ -1,35 +1,32 @@
-function toggleMenu() {
-         var menu = document.getElementById("nav-links");
-         menu.classList.toggle("show");
-}
-   
 document.addEventListener("DOMContentLoaded", () => {
-            // Hamburger menu toggle
-            const menuButton = document.querySelector(".hamburger-menu");
-            const menu = document.getElementById("nav-links");
+    // Hamburger menu toggle
+    const menuButton = document.querySelector(".hamburger-menu");
+    const menu = document.getElementById("nav-links");
 
-            if (menuButton && menu) {
-                menuButton.addEventListener("click", function () {
-                    menu.classList.toggle("show");
-                });
-            }
+    if (menuButton && menu) {
+        menuButton.addEventListener("click", function () {
+            const isExpanded = menu.classList.toggle("show");
+            this.setAttribute("aria-expanded", isExpanded);
         });
-function navigateToResource() {
-            const categories = document.getElementsByName('category');
-            let selectedCategory = '';
-            for (const category of categories) {
-                if (category.checked) {
-                    selectedCategory = category.value;
-                    break;
-                }
-            }
-            if (selectedCategory) {
-                window.location.href = selectedCategory;
-            } else {
-                alert('Please select a category to continue.');
-            }
-        }
+    }
 
-        function goBack() {
-            window.history.back();
-        }
+    // Category Navigation
+    document.getElementById("continue-btn")?.addEventListener("click", navigateToResource);
+});
+
+// Function to navigate based on selected category
+function navigateToResource() {
+    const selectedCategory = [...document.getElementsByName("category")]
+        .find(category => category.checked)?.value;
+
+    if (selectedCategory) {
+        window.location.href = selectedCategory;
+    } else {
+        alert("Please select a category to continue.");
+    }
+}
+
+// Function to go back to the previous page
+function goBack() {
+    window.history.back();
+}

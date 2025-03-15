@@ -149,7 +149,7 @@ nav a:hover {
     align-items: center; /* Vertically align logo and site name */
     justify-content: flex-start; /* Align items to the left */
     gap: 15px; /* Space between logo and site name */
-    margin-left: 10px; /* Ensures the logo starts from a small margin close to the left */
+    margin-left: 0px; /* Ensures the logo starts from a small margin close to the left */
 }
 
 
@@ -161,7 +161,7 @@ nav a:hover {
 
 .site-name {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: bold;
     margin: 0;
     color: #333; /* Set a dark color for the site name */
 }
@@ -283,6 +283,7 @@ footer p {
 footer a {
     color: white;
     text-decoration: none;
+    width:98%
 }
 
 footer a:hover {

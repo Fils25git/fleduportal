@@ -4,6 +4,34 @@
     padding: 0;
     box-sizing: border-box;
 }
+nav ul {
+         display: none;
+         list-style: none;
+         padding: 0;
+      }
+      nav ul.show {
+         display: block;
+         animation: fadeIn 0.3s ease-in-out;
+      }
+      .hamburger-menu {
+         display: block;
+         cursor: pointer;
+         font-size: 2rem;
+         padding: 10px;
+      }
+      @media (min-width: 768px) {
+         nav ul {
+            display: flex;
+            gap: 20px;
+         }
+         .hamburger-menu {
+            display: none;
+         }
+      }
+      @keyframes fadeIn {
+         from { opacity: 0; }
+         to { opacity: 1; }
+      }
 
 /* Global Styles */
 body {

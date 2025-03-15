@@ -145,24 +145,26 @@ nav a:hover {
 /* Hero Content (Logo and Site Name) */
 .hero-content {
     display: flex;
-    justify-content: center;  /* Center the content horizontally */
-    align-items: center;  /* Align items vertically */
-    margin-bottom: 20px;  /* Space between logo/site name and paragraph */
+    align-items: center; /* Vertically align logo and site name */
+    justify-content: flex-start; /* Align items to the left */
+    gap: 15px; /* Space between logo and site name */
+    margin-left: 10px; /* Ensures the logo starts from a small margin close to the left */
 }
+
 
 /* Logo Styling */
 .hero-logo {
-    width: 120px;  /* Make the logo large */
+    width: 80px; /* Adjust logo size */
     height: auto;
-    margin-right: 20px;  /* Space between logo and site name */
 }
 
-/* Site Name Styling */
 .site-name {
-    font-size: 3rem;  /* Adjust the font size for the site name */
-    font-weight: bold;
-    color: #333;  /* Change to your desired text color */
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #333; /* Set a dark color for the site name */
 }
+
 /* Optional: Styling for the additional text */
 .additional-text {
     margin-top: 20px;

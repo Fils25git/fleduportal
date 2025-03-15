@@ -5,29 +5,44 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Welcome to FL EduAcademy</title>
    <meta name="google-adsense-account" content="ca-pub-2007098232067908">
-   <meta{ context="https://schema.org",
-  type="Organization",
-  url="https://fleaduacademy.com",
-  logo="https://fleaduacademy.com/logo.png",}>
 
-   <meta property="og:image" content="logo.png">
-<meta name="twitter:image" content="logo.png">
-   <meta name="description" content="FL EduAcademy - Access exams and learning materials">
+   <!-- Schema.org Structured Data -->
+   <script type="application/ld+json">
+   {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "FL EduAcademy",
+      "url": "https://fleduacademy.com",
+      "logo": "https://fleduacademy.com/logo.png"
+   }
+   </script>
+
+   <!-- Open Graph & Twitter Meta Tags -->
+   <meta property="og:image" content="https://fleduacademy.com/logo.png">
+   <meta name="twitter:image" content="https://fleduacademy.com/logo.png">
+
+   <!-- SEO Optimization -->
+   <meta name="description" content="FL EduAcademy offers a wide range of educational resources, including exams, learning materials, and study guides for teachers and students across primary and secondary education.">
    <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">
    <meta name="author" content="Fils Lambert IRATURINZE">
+
+   <!-- Stylesheets & Icons -->
    <link rel="stylesheet" href="style.css">
    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="manifest" href="/site.webmanifest">
+
+   <!-- Improved Navigation Styles -->
    <style>
-      
-      /* Default styling for navigation and hamburger menu */
       nav ul {
          display: none;
+         list-style: none;
+         padding: 0;
       }
       nav ul.show {
          display: block;
+         animation: fadeIn 0.3s ease-in-out;
       }
       .hamburger-menu {
          display: block;
@@ -35,14 +50,18 @@
          font-size: 2rem;
          padding: 10px;
       }
-      /* For larger screens, show the full nav and hide the hamburger menu */
       @media (min-width: 768px) {
          nav ul {
             display: flex;
+            gap: 20px;
          }
          .hamburger-menu {
             display: none;
          }
+      }
+      @keyframes fadeIn {
+         from { opacity: 0; }
+         to { opacity: 1; }
       }
    </style>
 </head>

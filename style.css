@@ -163,6 +163,13 @@ nav a:hover {
     font-weight: bold;
     color: #333;  /* Change to your desired text color */
 }
+/* Optional: Styling for the additional text */
+.additional-text {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
 
 /* Optional: You can add responsiveness for mobile */
 @media (max-width: 768px) {

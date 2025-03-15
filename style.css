@@ -125,7 +125,6 @@ nav a:hover {
         border-radius: 3px;
     }
 }
-
 /* Hero Section */
 .hero {
     text-align: center;
@@ -141,6 +140,44 @@ nav a:hover {
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 20px;
+}
+
+/* Hero Content (Logo and Site Name) */
+.hero-content {
+    display: flex;
+    justify-content: center;  /* Center the content horizontally */
+    align-items: center;  /* Align items vertically */
+    margin-bottom: 20px;  /* Space between logo/site name and paragraph */
+}
+
+/* Logo Styling */
+.hero-logo {
+    width: 120px;  /* Make the logo large */
+    height: auto;
+    margin-right: 20px;  /* Space between logo and site name */
+}
+
+/* Site Name Styling */
+.site-name {
+    font-size: 3rem;  /* Adjust the font size for the site name */
+    font-weight: bold;
+    color: #333;  /* Change to your desired text color */
+}
+
+/* Optional: You can add responsiveness for mobile */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;  /* Stack the logo and site name on smaller screens */
+        text-align: center;
+    }
+
+    .hero-logo {
+        width: 100px;  /* Adjust logo size for smaller screens */
+    }
+
+    .site-name {
+        font-size: 2rem;  /* Adjust site name font size for smaller screens */
+    }
 }
 
 /* Form Container Styling */

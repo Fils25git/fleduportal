@@ -140,6 +140,7 @@ nav a:hover {
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    margin-left:0
 }
 
 /* Hero Content (Logo and Site Name) */

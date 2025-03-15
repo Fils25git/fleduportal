@@ -14,3 +14,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
         });
+function navigateToResource() {
+            const categories = document.getElementsByName('category');
+            let selectedCategory = '';
+            for (const category of categories) {
+                if (category.checked) {
+                    selectedCategory = category.value;
+                    break;
+                }
+            }
+            if (selectedCategory) {
+                window.location.href = selectedCategory;
+            } else {
+                alert('Please select a category to continue.');
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }

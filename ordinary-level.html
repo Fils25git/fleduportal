@@ -13,52 +13,31 @@
     <link rel="icon" type="image/png"  href="logo.png">
     <link rel="stylesheet" href="style.css">
     <style>
-        .resource-list {
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            background-color: #f9f9f9;
-        }
-        .resource-item {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .resource-item h3 {
-            margin-bottom: 10px;
-        }
-        .resource-buttons button {
-            margin-left: 10px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .resource-buttons button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    
 </head>
 <body>
     <header>
-        <a href="index.html">
-            <img src="logo.png" alt="FL EduAcademy Logo" style="height: 50px;">
-        </a>
+    <header>
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+
+        <!-- Navigation Menu -->
         <nav>
-            <a href="index.html">Home</a>
-            <a href="preprimary.html">Preprimary</a>
-            <a href="primary.html">Primary</a>
-            <a href="ordinary-level.html">Ordinary Level</a>
-            <a href="advanced-level.html">Advanced Level</a>
+            <ul id="nav-links">
+                <li class="nav-home"><a href="userSelection.html">Home</a></li>
+                <li> <a href="preprimary.html">Preprimary</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li> <a href="ordinary-level.html">Ordinary Level</a></li>
+                <li><a href="advanced-level.html">Advanced Level</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms and Conditions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                 <li class="nav-login"><a href="login.html">Log Out</a></li>
+            </ul>
         </nav>
+        <a href="userSelection.html">
+            <img src="logo.png" alt="FL EduAcademy Logo" class="logo">
+        </a>
     </header>
 
     <section class="hero">

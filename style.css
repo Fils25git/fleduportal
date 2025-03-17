@@ -220,7 +220,7 @@ nav a:hover {
     align-items: center; /* Vertically align logo and site name */
     justify-content: flex-start; /* Align items to the left */
     gap: 15px; /* Space between logo and site name */
-    margin-left: 0px; /* Ensures the logo starts from a small margin close to the left */
+    margin-left: 50%; /* Ensures the logo starts from a small margin close to the left */
 }
 
 

@@ -9,6 +9,12 @@ nav ul {
          list-style: none;
          padding: 0;
       }
+.container {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+
       nav ul.show {
          display: block;
          animation: fadeIn 0.3s ease-in-out;
@@ -63,6 +69,12 @@ nav ul {
         .resource-buttons button:hover {
             background-color: #45a049;
         }
+section {
+   display: block;
+   width: 100%;
+   clear: both;
+}
+
 
 /* Global Styles */
 body {
@@ -365,6 +377,11 @@ footer a:hover {
     justify-content: space-around;
     padding: 50px 20px;
     background-color: white;
+     display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+    float: none;
 }
 
 .feature {
@@ -394,8 +411,8 @@ footer a:hover {
     }
 
     .feature {
-        width: 80%;
         margin-bottom: 30px;
+        width:100%;
     }
 }
 

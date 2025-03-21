@@ -338,6 +338,7 @@ button:hover,
             gap: 20px; /* Space between buttons */
             margin-top: 20px; /* Add space on top */
             position:fixed;
+           margin-right:0px;
         }
 
         /* Button Styles */

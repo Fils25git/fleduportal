@@ -69,6 +69,56 @@ nav ul {
         .resource-buttons button:hover {
             background-color: #45a049;
         }
+/* Ensure the menu stays in the top-right corner on all screen sizes */
+.subjects-menu {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    z-index: 1000; /* Keeps it above other elements */
+}
+
+/* Style the button */
+.subjects-btn {
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+}
+
+/* Menu content (Hidden by default) */
+.subjects-menu-content {
+    display: none;
+    position: absolute;
+    top: 40px; /* Position below the button */
+    right: 0;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 10px;
+    min-width: 140px;
+}
+
+/* Menu item styling */
+.subjects-menu-content li {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.subjects-menu-content a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+/* Show menu when active */
+.subjects-menu-content.show {
+    display: block;
+}
 section {
    display: block;
    width: 100%;

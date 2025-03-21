@@ -337,8 +337,8 @@ button:hover,
             align-items: center; /* Center the buttons vertically */
             gap: 20px; /* Space between buttons */
             margin-top: 20px; /* Add space on top */
-            position:fixed;
-           margin-right:0px;
+            margin-left:auto;
+           margin-right:auto;
         }
 
         /* Button Styles */

@@ -44,3 +44,18 @@ function goBack() {
                 }
             });
         }
+function toggleSubjectsMenu() {
+    let menu = document.getElementById('subjectsMenuContent');
+    let icon = document.getElementById('subjectsMenuIcon');
+
+    // Close any other open menus
+    document.querySelectorAll('.subjects-menu-content').forEach(m => {
+        if (m !== menu) m.classList.remove('show');
+    });
+
+    // Toggle menu visibility
+    menu.classList.toggle('show');
+
+    // Change icon between "Book + Three Dots" and "Book + Close"
+    icon.innerHTML = menu.classList.contains('show') ? '📖<br>✖' : '📖<br>⋯';
+}

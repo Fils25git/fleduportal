@@ -30,3 +30,17 @@ function navigateToResource() {
 function goBack() {
     window.history.back();
 }
+
+        function searchResources() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const resources = document.querySelectorAll('.resource-item');
+
+            resources.forEach(resource => {
+                const title = resource.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    resource.style.display = 'flex';
+                } else {
+                    resource.style.display = 'none';
+                }
+            });
+        }

@@ -31,17 +31,29 @@
                  <li class="nav-login"><a href="index.html">Log Out</a></li>
             </ul>
         </nav>
-        <a href="userSelection.html">
+        <a href="primary-book.html" style="margin-left:50%; margin-right:50%;">
             <img src="logo.png" alt="FL EduAcademy Logo" class="logo">
         </a>
+    <!-- Subjects Menu (Book + Three Dots) in Top-Right Corner -->
+<div class="subjects-menu" id="subjectsMenuContainer">
+    <button class="subjects-btn" onclick="toggleSubjectsMenu()">
+        <span id="subjectsMenuIcon">📖<br>⋯</span>
+    </button>
+    <ul class="subjects-menu-content" id="subjectsMenuContent">
+        <li><a href="primary-math-book.html">Mathematics</a></li>
+        <li><a href="primary-set-book.html">SET</a></li>
+        <li><a href="primary-srs-book.html">SRS</a></li>
+        <li><a href="primary-english-book.html">English</a></li>
+    </ul>
+</div>
     </header>
 <body>
     <a href="https://whatsapp.com/channel/0029VbAOSRG0G0XmNQGKpR3k" class="shake-link" target="_blank">
     📢 Follow FL EduAcademy On WhatsApp for documents updates and news updates!
     </a>
     <section class="hero">
-        <h1>Primary Textbooks</h1>
-        <p>Browse and access primary level Students books and teachers' guides. You can view them online or download them for later.</p>
+        <h1>Primary Kinyarwanda Textbooks</h1>
+        <p>Browse and access primary level Kinyarwanda Students books and teachers' guides. You can view them online or download them for later.</p>
         <input type="text" id="searchInput" placeholder="Search resources..." onkeyup="searchResources()" style="width: 100%; padding: 10px; margin-top: 20px; border-radius: 5px; border: 1px solid #ccc;">
     </section>
 <section class="resource-list" id="resourceList">

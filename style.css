@@ -331,8 +331,38 @@ button:hover,
 .btn:hover {
     background-color: #218838;
 }
+.button-container {
+            display: flex; /* Use Flexbox to align buttons */
+            justify-content: center; /* Center the buttons horizontally */
+            align-items: center; /* Center the buttons vertically */
+            gap: 20px; /* Space between buttons */
+            margin-top: 20px; /* Add space on top */
+            position:fixed;
+        }
 
-/* Footer Styling */
+        /* Button Styles */
+        .nav-btn {
+            background-color: #4CAF50; /* Green background for Next */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer on hover */
+            font-size: 16px; /* Font size */
+        }
+
+        .nav-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .previous-btn {
+            background-color: #f44336; /* Red background for Previous */
+        }
+
+        .previous-btn:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+        }
+
 /* Footer Styling */
 footer {
     background-color: #4CAF50; /* Green background */

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-2007098232067908">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch classroom videos to make learners feel relaxed, active, and ready to learn on FL EduAcademy.">
+    <meta name="keywords" content="classroom videos, relaxing, active learners, educational, FL EduAcademy, school videos, fun learning">
+    <meta name="author" content="FL EduAcademy">
+    <title>Classroom Relax & Energize Videos - FL EduAcademy</title>
+    <link rel="icon" type="image/png"  href="logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+
+        <nav>
+            <ul id="nav-links">
+                <li><a href="userSelection.html">Home</a></li>
+                <li><a href="preprimary.html">Preprimary</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li><a href="ordinary-level.html">Ordinary Level</a></li>
+                <li><a href="advanced-level.html">Advanced Level</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms and Conditions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="login.html">Log Out</a></li>
+            </ul>
+        </nav>
+        <a href="userSelection.html">
+            <img src="logo.png" alt="FL EduAcademy Logo" class="logo">
+        </a>
+    </header>
+
+    <section class="hero">
+        <h1>Classroom Relax & Energize Videos</h1>
+        <p>Use these videos in your classroom to help learners feel relaxed, focused, and full of energy.</p>
+        <input type="text" id="searchInput" placeholder="Search videos..." onkeyup="searchResources()"
+               style="width: 100%; padding: 10px; margin-top: 20px; border-radius: 5px; border: 1px solid #ccc;">
+    </section>
+
+    <section class="resource-list" id="resourceList">
+        <div class="resource-item" data-title="Morning Stretch for Kids">
+            <div>
+                <h3>Morning Stretch for Kids</h3>
+                <p>Start the day with calm and energy using this short stretching video perfect for learners of all ages.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="https://www.youtube.com/watch?v=8zGzJdPB-1A" target="_blank"><button>Watch</button></a>
+            </div>
+        </div>
+
+        <div class="resource-item" data-title="Dance and Move Break">
+            <div>
+                <h3>Dance and Move Break</h3>
+                <p>A fun, upbeat movement break to re-energize your class and boost student engagement.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="https://www.youtube.com/watch?v=KhfkYzUwYFk" target="_blank"><button>Watch</button></a>
+            </div>
+        </div>
+
+        <div class="resource-item" data-title="Calming Classroom Music">
+            <div>
+                <h3>Calming Classroom Music</h3>
+                <p>Play soft background music to help students concentrate and relax during individual work or reading time.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="https://www.youtube.com/watch?v=2OEL4P1Rz04" target="_blank"><button>Watch</button></a>
+            </div>
+        </div>
+
+        <div class="resource-item" data-title="Mindful Breathing for Children">
+            <div>
+                <h3>Mindful Breathing for Children</h3>
+                <p>Guide students in a short breathing exercise to reduce stress and improve focus.</p>
+            </div>
+            <div class="resource-buttons">
+                <a href="https://www.youtube.com/watch?v=wf5K3pP2IUQ" target="_blank"><button>Watch</button></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Phone/WhatsApp: +250798652481</p>
+        <p>Email: fleduportal25@gmail.com</p>
+        <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuButton = document.querySelector(".hamburger-menu");
+            const menu = document.getElementById("nav-links");
+
+            if (menuButton && menu) {
+                menuButton.addEventListener("click", function () {
+                    menu.classList.toggle("show");
+                });
+            }
+        });
+
+        function searchResources() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const resources = document.querySelectorAll('.resource-item');
+
+            resources.forEach(resource => {
+                const title = resource.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    resource.style.display = 'flex';
+                } else {
+                    resource.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+      </html>

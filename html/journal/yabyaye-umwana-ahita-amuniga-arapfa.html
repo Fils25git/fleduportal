@@ -1,3 +1,48 @@
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <meta name="description" content="Access preprimary level educational resources including activities, guides, and fun learning materials on FL EduAcademy. View or download materials easily.">  
+    <meta name="keywords" content="Preprimary education, learning resources, FL EduAcademy, activities, fun learning, download, view online">  
+    <meta name="author" content="FL EduAcademy">  
+    <meta name="description" content="FL EduAcademy- Access exams and learning materials">  
+    <meta name="keywords" content="education, exams, primary, secondary, teachers, learners">  
+    <meta name="author" content="Fils Lambert IRATURINZE">  
+    <link rel="icon" type="image/png" href="/logo.png">  
+    <title>Rusizi:Yabyaye umwana ahita amuniga</title>  
+    <link rel="stylesheet" href="/journal.css">  
+    <link rel="stylesheet" href="/style.css">  
+    <script src="journal.js" defer></script>  
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>  
+    <!-- Google tag (gtag.js) -->  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W72DSTS70X"></script>  
+</head>  
+<script>  
+  window.dataLayer = window.dataLayer || [];  
+  function gtag(){dataLayer.push(arguments);}  
+  gtag('js', new Date());  
+  gtag('config', 'G-W72DSTS70X');  
+</script>  
+
+<body>  
+<header>  
+    <div class="hamburger-menu" onclick="toggleMenu()">☰</div>  
+    <nav>  
+        <ul id="nav-links">  
+            <li class="nav-home"><a href="/userSelection.html">Home</a></li>  
+            <li><a href="/journal.html" class="active">Journal</a></li>  
+            <li><a href="/preprimary.html">Preprimary</a></li>  
+            <li><a href="/primary.html">Primary</a></li>  
+            <li><a href="/ordinary-level.html">Ordinary Level</a></li>  
+            <li><a href="/advanced-level.html">Advanced Level</a></li>  
+            <li><a href="/privacy.html">Privacy Policy</a></li>  
+            <li><a href="/terms.html">Terms and Conditions</a></li>  
+            <li><a href="/about.html">About Us</a></li>  
+            <li class="nav-login"><a href="/index.html">Log Out</a></li>  
+        </ul>  
+    </nav>    
+    <img src="/logo.png" alt="FL EduAcademy Logo" class="logo">  
+</header>  
 <main>  
    <section class="journal-container">   
     <h2>Uyu munsi sindi umunyamakuru, ndi umuntu uremerewe n’agahinda</h2>
@@ -32,3 +77,25 @@
   </nav>
     </section>
   </main>
+   
+
+        // Save to localStorage
+        const comments = JSON.parse(localStorage.getItem("comments")) || [];
+        comments.push({ name, text });
+        localStorage.setItem("comments", JSON.stringify(comments));
+
+        // Clear inputs
+        nameInput.value = "";
+        commentInput.value = "";
+
+        // Reload comments
+        loadComments();
+    }
+
+    commentBtn.addEventListener("click", addComment);
+    await loadComments();
+});
+</script>
+
+</body>
+</html>

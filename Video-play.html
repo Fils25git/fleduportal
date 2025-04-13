@@ -1,0 +1,44 @@
+<body>
+    <div id="videoFeed" class="video-feed">
+        <!-- JS will inject each video here -->
+    </div>
+
+    <script>
+        const videos = [
+            {
+                title: "I Love You Mom",
+                description: "Warm-up song to help learners relax.",
+                url: "https://cybervynx.com/8wnzgvao0c4g",
+                embed: true
+            },
+            {
+                title: "Dance and Move Break",
+                description: "A fun movement break to energize your class.",
+                url: "https://yourdomain.com/videos/dance.mp4",
+                embed: false
+            }
+            // Add more videos here...
+        ];
+
+        const feed = document.getElementById("videoFeed");
+
+        videos.forEach(video => {
+            const section = document.createElement("section");
+            section.className = "video-slide";
+
+            const media = video.embed
+                ? `<iframe src="${video.url}" allowfullscreen></iframe>`
+                : `<video src="${video.url}" controls autoplay muted loop></video>`;
+
+            section.innerHTML = `
+                <div class="video-container">
+                    <h2>${video.title}</h2>
+                    <p>${video.description}</p>
+                    ${media}
+                </div>
+            `;
+
+            feed.appendChild(section);
+        });
+    </script>
+</body>

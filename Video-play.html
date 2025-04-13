@@ -1,85 +1,107 @@
-<style>
-    body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classroom Relax Videos</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      font-family: sans-serif;
+      background-color: #000;
+    }
 
-.video-feed {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-}
+    .video-feed {
+      scroll-snap-type: y mandatory;
+    }
 
-.video-slide {
-    height: 100vh;
-    scroll-snap-align: start;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: #000;
-    color: white;
-    padding: 20px;
-}
+    .video-slide {
+      scroll-snap-align: start;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
 
-.video-container {
-    width: 100%;
-    max-width: 480px;
-    text-align: center;
-}
+    .video-wrapper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
 
-video, iframe {
-    width: 100%;
-    height: 80vh;
-    border-radius: 10px;
-    border: none;
-    margin-top: 20px;
-}
-</style>
+    video, iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      color: white;
+      box-sizing: border-box;
+    }
+
+    .overlay h2 {
+      margin: 0 0 5px;
+      font-size: 1.5em;
+    }
+
+    .overlay p {
+      margin: 0;
+      font-size: 1em;
+      opacity: 0.9;
+    }
+  </style>
+</head>
 <body>
-    <div id="videoFeed" class="video-feed">
-        <!-- JS will inject each video here -->
-    </div>
+  <div class="video-feed" id="videoFeed"></div>
 
-    <script>
-        const videos = [
-            {
-                title: "I Love You Mom",
-                description: "Warm-up song to help learners relax.",
-                url: "https://cybervynx.com/8wnzgvao0c4g",
-                embed: true
-            },
-            {
-                title: "Dance and Move Break",
-                description: "A fun movement break to energize your class.",
-                url: "https://yourdomain.com/videos/dance.mp4",
-                embed: false
-            }
-            // Add more videos here...
-        ];
+  <script>
+    const videos = [
+      {
+        title: "I Love You Mom",
+        description: "Warm-up song to help learners relax.",
+        url: "https://cybervynx.com/8wnzgvao0c4g",
+        embed: true
+      },
+      {
+        title: "Dance and Move Break",
+        description: "Fun movement break to energize your class.",
+        url: "https://yourdomain.com/videos/dance.mp4",
+        embed: false
+      }
+    ];
 
-        const feed = document.getElementById("videoFeed");
+    const feed = document.getElementById("videoFeed");
 
-        videos.forEach(video => {
-            const section = document.createElement("section");
-            section.className = "video-slide";
+    videos.forEach(video => {
+      const section = document.createElement("section");
+      section.className = "video-slide";
 
-            const media = video.embed
-                ? `<iframe src="${video.url}" allowfullscreen></iframe>`
-                : `<video src="${video.url}" controls autoplay muted loop></video>`;
+      const media = video.embed
+        ? `<iframe src="${video.url}" allowfullscreen></iframe>`
+        : `<video src="${video.url}" controls autoplay muted loop></video>`;
 
-            section.innerHTML = `
-                <div class="video-container">
-                    <h2>${video.title}</h2>
-                    <p>${video.description}</p>
-                    ${media}
-                </div>
-            `;
+      section.innerHTML = `
+        <div class="video-wrapper">
+          ${media}
+          <div class="overlay">
+            <h2>${video.title}</h2>
+            <p>${video.description}</p>
+          </div>
+        </div>
+      `;
 
-            feed.appendChild(section);
-        });
-    </script>
+      feed.appendChild(section);
+    });
+  </script>
 </body>
+</html>

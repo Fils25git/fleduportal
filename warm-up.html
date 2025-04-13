@@ -115,7 +115,7 @@
 
     </header>
 <section class="hero">
-    <h1> The best Classroom Relax & Energize Videos</h1>
+    <h1>Classroom Relax & Energize Videos</h1>
     <p>Use these videos in your classroom to help learners feel relaxed, focused, and full of energy.</p>
     <input type="text" id="searchInput" placeholder="Search videos..." onkeyup="searchResources()"
            style="width: 100%; padding: 10px; margin-top: 20px; border-radius: 5px; border: 1px solid #ccc;">
@@ -132,84 +132,68 @@
 
 <script>
     const videos = [
-        {
-            title: "I love You Mom",
-            description: "The warm up song that will help learners Feel relaxed, And master English Language.",
-            url: "https://cybervynx.com/8wnzgvao0c4g"
-        },
-        {
-            title: "Dance and Move Break",
-            description: "A fun, upbeat movement break to re-energize your class and boost student engagement.",
-            url: "https://your-cybervynx-link.com/videos/dance-break.mp4"
-        },
-        {
-            title: "Calming Classroom Music",
-            description: "Play soft background music to help students concentrate and relax during individual work or reading time.",
-            url: "https://your-cybervynx-link.com/videos/calming-music.mp4"
-        },
-        {
-            title: "Mindful Breathing for Children",
-            description: "Guide students in a short breathing exercise to reduce stress and improve focus.",
-            url: "https://your-cybervynx-link.com/videos/mindful-breathing.mp4"
-        }
-    ];
-
-    let showAll = false;
-    const maxVisible = 3;
-
-    function renderVideos(videoList) {
-        const container = document.getElementById("resourceList");
-        container.innerHTML = "";
-
-        const visibleVideos = showAll ? videoList : videoList.slice(0, maxVisible);
-
-        visibleVideos.forEach(video => {
-            const item = document.createElement("div");
-            item.className = "resource-item";
-            item.setAttribute("data-title", video.title.toLowerCase());
-
-            item.innerHTML = `
-                <div>
-                    <h3>${video.title}</h3>
-                    <p>${video.description}</p>
-                    <video width="100%" height="250" controls style="border-radius: 10px; margin-top: 10px;">
-                        <source src="${video.url}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            `;
-
-            container.appendChild(item);
-        });
-
-        // Toggle button for more/less
-        if (videoList.length > maxVisible) {
-            const toggleButton = document.createElement("button");
-            toggleButton.textContent = showAll ? "Show Less" : "Show More";
-            toggleButton.onclick = () => {
-                showAll = !showAll;
-                renderVideos(videoList);
-            };
-            toggleButton.style.marginTop = "20px";
-            toggleButton.style.padding = "10px 20px";
-            toggleButton.style.borderRadius = "5px";
-            toggleButton.style.border = "none";
-            toggleButton.style.backgroundColor = "#007BFF";
-            toggleButton.style.color = "#fff";
-            toggleButton.style.cursor = "pointer";
-            container.appendChild(toggleButton);
-        }
+    {
+        title: "I Love You Mom",
+        description: "The warm-up song that helps learners feel relaxed and master the English language.",
+        url: "https://cybervynx.com/8wnzgvao0c4g",
+        embed: true
+    },
+    {
+        title: "Dance and Move Break",
+        description: "A fun, upbeat movement break to re-energize your class.",
+        url: "https://yourdomain.com/videos/dance.mp4",
+        embed: false
     }
+];
 
-    function searchResources() {
-        const query = document.getElementById("searchInput").value.toLowerCase();
-        const filtered = videos.filter(video => video.title.toLowerCase().includes(query));
-        showAll = false;
-        renderVideos(filtered);
+    
+        function renderVideos(videoList) {
+    const container = document.getElementById("resourceList");
+    container.innerHTML = "";
+
+    const visibleVideos = showAll ? videoList : videoList.slice(0, maxVisible);
+
+    visibleVideos.forEach(video => {
+        const item = document.createElement("div");
+        item.className = "resource-item";
+        item.setAttribute("data-title", video.title.toLowerCase());
+
+        const media = video.embed
+            ? `<iframe src="${video.url}" width="100%" height="250" style="border-radius: 10px; margin-top: 10px;" frameborder="0" allowfullscreen></iframe>`
+            : `<video width="100%" height="250" controls style="border-radius: 10px; margin-top: 10px;">
+                    <source src="${video.url}" type="video/mp4">
+                    Your browser does not support the video tag.
+               </video>`;
+
+        item.innerHTML = `
+            <div>
+                <h3>${video.title}</h3>
+                <p>${video.description}</p>
+                ${media}
+            </div>
+        `;
+
+        container.appendChild(item);
+    });
+
+    // Toggle Show More / Show Less button
+    if (videoList.length > maxVisible) {
+        const toggleButton = document.createElement("button");
+        toggleButton.textContent = showAll ? "Show Less" : "Show More";
+        toggleButton.onclick = () => {
+            showAll = !showAll;
+            renderVideos(videoList);
+        };
+        toggleButton.style.marginTop = "20px";
+        toggleButton.style.padding = "10px 20px";
+        toggleButton.style.borderRadius = "5px";
+        toggleButton.style.border = "none";
+        toggleButton.style.backgroundColor = "#007BFF";
+        toggleButton.style.color = "#fff";
+        toggleButton.style.cursor = "pointer";
+        container.appendChild(toggleButton);
     }
-
-    // Initial render
-    renderVideos(videos);
+    }
 </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {

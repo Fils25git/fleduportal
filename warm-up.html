@@ -125,35 +125,34 @@
 <section class="resource-list" id="resourceList">
     <!-- JavaScript will inject video items here -->
 </section>
-
     <footer>
         <p>Phone/WhatsApp: +250798652481</p>
         <p>Email: fleduportal25@gmail.com</p>
         <p>&copy; 2025 FL EduAcademy. All rights reserved.</p>
     </footer>
-    <script>
+
+<script>
     const videos = [
         {
             title: "Morning Stretch for Kids",
             description: "Start the day with calm and energy using this short stretching video perfect for learners of all ages.",
-            url: "https://www.youtube.com/watch?v=8zGzJdPB-1A"
+            url: "https://your-cybervynx-link.com/videos/morning-stretch.mp4"
         },
         {
             title: "Dance and Move Break",
             description: "A fun, upbeat movement break to re-energize your class and boost student engagement.",
-            url: "https://www.youtube.com/watch?v=KhfkYzUwYFk"
+            url: "https://your-cybervynx-link.com/videos/dance-break.mp4"
         },
         {
             title: "Calming Classroom Music",
             description: "Play soft background music to help students concentrate and relax during individual work or reading time.",
-            url: "https://www.youtube.com/watch?v=2OEL4P1Rz04"
+            url: "https://your-cybervynx-link.com/videos/calming-music.mp4"
         },
         {
             title: "Mindful Breathing for Children",
             description: "Guide students in a short breathing exercise to reduce stress and improve focus.",
-            url: "https://www.youtube.com/watch?v=wf5K3pP2IUQ"
-        },
-        // Add more video objects here if needed
+            url: "https://your-cybervynx-link.com/videos/mindful-breathing.mp4"
+        }
     ];
 
     let showAll = false;
@@ -174,16 +173,17 @@
                 <div>
                     <h3>${video.title}</h3>
                     <p>${video.description}</p>
-                </div>
-                <div class="resource-buttons">
-                    <a href="${video.url}" target="_blank"><button>Watch</button></a>
+                    <video width="100%" height="250" controls style="border-radius: 10px; margin-top: 10px;">
+                        <source src="${video.url}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             `;
 
             container.appendChild(item);
         });
 
-        // Add "Show More"/"Show Less" button
+        // Toggle button for more/less
         if (videoList.length > maxVisible) {
             const toggleButton = document.createElement("button");
             toggleButton.textContent = showAll ? "Show Less" : "Show More";
@@ -192,6 +192,12 @@
                 renderVideos(videoList);
             };
             toggleButton.style.marginTop = "20px";
+            toggleButton.style.padding = "10px 20px";
+            toggleButton.style.borderRadius = "5px";
+            toggleButton.style.border = "none";
+            toggleButton.style.backgroundColor = "#007BFF";
+            toggleButton.style.color = "#fff";
+            toggleButton.style.cursor = "pointer";
             container.appendChild(toggleButton);
         }
     }
@@ -199,14 +205,13 @@
     function searchResources() {
         const query = document.getElementById("searchInput").value.toLowerCase();
         const filtered = videos.filter(video => video.title.toLowerCase().includes(query));
-        showAll = false; // Reset to default view when searching
+        showAll = false;
         renderVideos(filtered);
     }
 
     // Initial render
     renderVideos(videos);
-    </script>
-
+</script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const menuButton = document.querySelector(".hamburger-menu");

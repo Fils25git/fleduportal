@@ -132,68 +132,79 @@
 
 <script>
     const videos = [
-    {
-        title: "I Love You Mom",
-        description: "The warm-up song that helps learners feel relaxed and master the English language.",
-        url: "https://cybervynx.com/8wnzgvao0c4g",
-        embed: true
-    },
-    {
-        title: "Dance and Move Break",
-        description: "A fun, upbeat movement break to re-energize your class.",
-        url: "https://yourdomain.com/videos/dance.mp4",
-        embed: false
+        {
+            title: "I Love You Mom",
+            description: "The warm-up song that helps learners feel relaxed and master the English language.",
+            url: "https://cybervynx.com/8wnzgvao0c4g",
+            embed: true
+        },
+        {
+            title: "Dance and Move Break",
+            description: "A fun, upbeat movement break to re-energize your class.",
+            url: "https://yourdomain.com/videos/dance.mp4",
+            embed: false
+        }
+    ];
+
+    let showAll = false;
+    const maxVisible = 3;
+
+    function renderVideos(videoList) {
+        const container = document.getElementById("resourceList");
+        container.innerHTML = "";
+
+        const visibleVideos = showAll ? videoList : videoList.slice(0, maxVisible);
+
+        visibleVideos.forEach(video => {
+            const item = document.createElement("div");
+            item.className = "resource-item";
+            item.setAttribute("data-title", video.title.toLowerCase());
+
+            const media = video.embed
+                ? `<iframe src="${video.url}" width="100%" height="250" style="border-radius: 10px; margin-top: 10px;" frameborder="0" allowfullscreen></iframe>`
+                : `<video width="100%" height="250" controls style="border-radius: 10px; margin-top: 10px;">
+                        <source src="${video.url}" type="video/mp4">
+                        Your browser does not support the video tag.
+                   </video>`;
+
+            item.innerHTML = `
+                <div>
+                    <h3>${video.title}</h3>
+                    <p>${video.description}</p>
+                    ${media}
+                </div>
+            `;
+
+            container.appendChild(item);
+        });
+
+        if (videoList.length > maxVisible) {
+            const toggleButton = document.createElement("button");
+            toggleButton.textContent = showAll ? "Show Less" : "Show More";
+            toggleButton.onclick = () => {
+                showAll = !showAll;
+                renderVideos(videoList);
+            };
+            toggleButton.style.marginTop = "20px";
+            toggleButton.style.padding = "10px 20px";
+            toggleButton.style.borderRadius = "5px";
+            toggleButton.style.border = "none";
+            toggleButton.style.backgroundColor = "#007BFF";
+            toggleButton.style.color = "#fff";
+            toggleButton.style.cursor = "pointer";
+            container.appendChild(toggleButton);
+        }
     }
-];
 
-    
-        function renderVideos(videoList) {
-    const container = document.getElementById("resourceList");
-    container.innerHTML = "";
-
-    const visibleVideos = showAll ? videoList : videoList.slice(0, maxVisible);
-
-    visibleVideos.forEach(video => {
-        const item = document.createElement("div");
-        item.className = "resource-item";
-        item.setAttribute("data-title", video.title.toLowerCase());
-
-        const media = video.embed
-            ? `<iframe src="${video.url}" width="100%" height="250" style="border-radius: 10px; margin-top: 10px;" frameborder="0" allowfullscreen></iframe>`
-            : `<video width="100%" height="250" controls style="border-radius: 10px; margin-top: 10px;">
-                    <source src="${video.url}" type="video/mp4">
-                    Your browser does not support the video tag.
-               </video>`;
-
-        item.innerHTML = `
-            <div>
-                <h3>${video.title}</h3>
-                <p>${video.description}</p>
-                ${media}
-            </div>
-        `;
-
-        container.appendChild(item);
-    });
-
-    // Toggle Show More / Show Less button
-    if (videoList.length > maxVisible) {
-        const toggleButton = document.createElement("button");
-        toggleButton.textContent = showAll ? "Show Less" : "Show More";
-        toggleButton.onclick = () => {
-            showAll = !showAll;
-            renderVideos(videoList);
-        };
-        toggleButton.style.marginTop = "20px";
-        toggleButton.style.padding = "10px 20px";
-        toggleButton.style.borderRadius = "5px";
-        toggleButton.style.border = "none";
-        toggleButton.style.backgroundColor = "#007BFF";
-        toggleButton.style.color = "#fff";
-        toggleButton.style.cursor = "pointer";
-        container.appendChild(toggleButton);
+    function searchResources() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const filtered = videos.filter(video => video.title.toLowerCase().includes(input));
+        showAll = false;
+        renderVideos(filtered);
     }
-    }
+
+    // Initial render
+    renderVideos(videos);
 </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {

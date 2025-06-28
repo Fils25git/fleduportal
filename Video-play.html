@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Classroom Relax Videos</title>
   <style>
     html, body {
@@ -32,11 +32,13 @@
       position: relative;
     }
 
-    video, iframe {
+    iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       border: none;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .overlay {
@@ -64,30 +66,43 @@
 <body>
   <div class="video-feed" id="videoFeed"></div>
 
+  <!-- Vimeo Player API -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+
   <script>
     const videos = [
-  {
-    title: "I Love You Mom",
-    description: "Warm-up song to help learners relax.",
-    url: "https://player.vimeo.com/video/1096855188?h=e8259b7e01",
-    embed: true
-  },
-  {
-    title: "Up high down low",
-    description: "Up high down low.",
-    url: "https://player.vimeo.com/video/1097097312?h=316703a117",
-    embed: true
-  }
-];
+      {
+        title: "I Love You Mom",
+        description: "Warm-up song to help learners relax.",
+        url: "https://player.vimeo.com/video/1096855188?h=e8259b7e01&autoplay=1&muted=1",
+        embed: true
+      },
+      {
+        title: "Up high down low",
+        description: "Up high down low.",
+        url: "https://player.vimeo.com/video/1097097312?h=316703a117&autoplay=1&muted=1",
+        embed: true
+      }
+    ];
+
+    // Shuffle videos
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    shuffle(videos);
 
     const feed = document.getElementById("videoFeed");
 
-    videos.forEach(video => {
+    videos.forEach((video, index) => {
       const section = document.createElement("section");
       section.className = "video-slide";
 
       const media = video.embed
-        ? `<iframe src="${video.url}" allowfullscreen></iframe>`
+        ? `<iframe id="player-${index}" src="${video.url}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
         : `<video src="${video.url}" controls autoplay muted loop></video>`;
 
       section.innerHTML = `
@@ -102,6 +117,40 @@
 
       feed.appendChild(section);
     });
+
+    const players = [];
+
+    // Create Vimeo Player instances
+    videos.forEach((video, index) => {
+      if (video.embed) {
+        const iframe = document.getElementById(`player-${index}`);
+        const player = new Vimeo.Player(iframe);
+        players.push(player);
+      } else {
+        players.push(null);
+      }
+    });
+
+    const slides = document.querySelectorAll(".video-slide");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const index = [...slides].indexOf(entry.target);
+        const player = players[index];
+
+        if (entry.isIntersecting) {
+          if (player) {
+            player.play();
+          }
+        } else {
+          if (player) {
+            player.pause();
+          }
+        }
+      });
+    }, { threshold: 0.7 });
+
+    slides.forEach(slide => observer.observe(slide));
   </script>
 </body>
 </html>
